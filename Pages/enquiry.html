@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Café Mocha | Enquiries</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1>Café Mocha</h1>
+        <img src="../Assets/WhatsApp Image 2025-08-25 at 21.04.14_2d31b423.jpg" width="200" height="150">
+         <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="enquiry.html">Enquiries</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Enquiry form section -->
+        <h2>Make an Enquiry</h2>
+        
+        <form>
+            <fieldset>
+                <legend>Your Information</legend>
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="phone">Phone:</label>
+                <input type="tel" id="phone" name="phone">
+            </fieldset>
+
+            <fieldset>
+                <legend>Enquiry Details</legend>
+                <label for="enquiry-type">Enquiry Type:</label>
+                <select id="enquiry-type" name="enquiry-type">
+                    <option value="general">General Question</option>
+                    <option value="catering">Catering Request</option>
+                    <option value="events">Event Booking</option>
+                    <option value="wholesale">Wholesale Coffee</option>
+                    <option value="feedback">Feedback</option>
+                </select>
+                
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+            </fieldset>
+
+            <button type="submit">Submit Enquiry</button>
+           
+        </form>
+        
+        <section>
+            <h3>Other Ways to Reach Us</h3>
+            <p>For immediate assistance, please call us at <a href="tel:+27111234567">+27 68 318 9672</a> during business hours.</p>
+        </section>
+    </main>
+    <!-- Footer with copyright and address information -->
+    <footer>
+        <p style="text-align: center;">&copy; 2025 Café Mocha.</p>
+        <address style="text-align: center;">
+            Rosebank, Johannesburg, South Africa
+        </address>
+    </footer>
+     <!-- Social media icons section -->
+    <div class="social-icons">
+                <a href="http://www.instagram.com/" class="instagram" data-platform="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="http://www.facebook.com" class="facebook" data-platform="Facebook">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="http://www.twitter.com/" class="twitter" data-platform="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="http://www.tiktok.com/" class="tiktok" data-platform="TikTok">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+            </div>
+</body>
+</html>

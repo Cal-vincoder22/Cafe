@@ -1,0 +1,438 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+/* basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Team member card container */
+.card-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin: 40px 0;
+}
+
+/* Individual team member card */
+.card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    width: 220px;
+    padding: 16px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Added transition for smooth hover effect */
+}
+
+/* Team member image styling */
+.card img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 12px;
+}
+
+/* Hover effect for team member cards */
+.card-container .card:hover { /* Fixed selector to target cards specifically */
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* Base styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header styling */
+header {
+    background-color: #4E342E;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+
+/* Navigation styling */
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+nav li {
+    margin: 0 15px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* Main content area */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Section heading styling */
+h2 {
+    text-align: center;
+    color: #4E342E;
+    border-bottom: 2px solid #D7CCC8;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+}
+
+/* Subheading styling */
+h3 {
+    color: #5D4037;
+    border-left: 4px solid #5D4037;
+    padding-left: 10px;
+}
+
+/* Section spacing */
+section {
+    margin-bottom: 40px;
+}
+
+/* Menu card container grid */
+.menu-category {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+    margin-top: 20px;
+}
+
+/* Individual menu item card */
+.menu-card {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Menu card hover effect */
+.menu-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Menu item image styling */
+.menu-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+/* Menu card content area */
+.card-content {
+    padding: 15px;
+}
+
+.card-content strong {
+    color: #4E342E;
+    font-size: 1.2rem;
+}
+
+.card-content p {
+    margin: 8px 0;
+    color: #666;
+}
+
+/* Price styling */
+.price {
+    color: #8D6E63;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+/* Footer styling */
+footer {
+    background-color: #4E342E;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    margin-top: 40px;
+}
+
+address {
+    font-style: normal;
+    margin-top: 10px;
+}
+
+/* Social media icons container */
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+/* Social media icon styling */
+.social-icons a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 30px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Instagram specific styling */
+.fa-instagram {
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    transition: all 0.3s ease;
+}
+
+a.instagram {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+a.instagram:hover {
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    transform: translateY(-5px) scale(1.1);
+}
+
+a.instagram:hover .fa-instagram {
+    color: white;
+}
+
+/* Facebook specific styling */
+.fa-facebook {
+    color: #1877F2;
+    transition: all 0.3s ease;
+}
+
+a.facebook {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+a.facebook:hover {
+    background: #1877F2;
+    transform: translateY(-5px) scale(1.1);
+}
+
+a.facebook:hover .fa-facebook {
+    color: white;
+}
+
+/* Twitter specific styling */
+.fa-twitter {
+    color: #1DA1F2;
+    transition: all 0.3s ease;
+}
+
+a.twitter {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+a.twitter:hover {
+    background: #1DA1F2;
+    transform: translateY(-5px) scale(1.1);
+}
+
+a.twitter:hover .fa-twitter {
+    color: white;
+}
+
+/* TikTok specific styling */
+a.tiktok {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.fa-tiktok {
+    color: #000000;
+    transition: all 0.3s ease;
+}
+
+a.tiktok:hover {
+    background: #000000;
+    transform: translateY(-5px) scale(1.1);
+}
+
+a.tiktok:hover .fa-tiktok {
+    color: white;
+}
+
+/* Tooltip for social media icons */
+a::after {
+    content: attr(data-platform);
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 14px;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    background: rgba(0, 0, 0, 0.7);
+    width: max-content;
+}
+
+a:hover::after {
+    opacity: 1;
+}
+
+/* Media query for tablets and smaller screens */
+@media (max-width: 768px) {
+    /* Stack menu items in single column */
+    .menu-category {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Stack navigation vertically */
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    nav li {
+        margin: 5px 0;
+    }
+    
+    /* Adjust social icons for smaller screens */
+    .social-icons {
+        gap: 20px;
+    }
+    
+    .social-icons a {
+        width: 60px;
+        height: 60px;
+        font-size: 25px;
+    }
+    
+    /* Adjust tooltip positioning */
+    a::after {
+        bottom: -35px;
+        font-size: 12px;
+        padding: 4px 8px;
+    }
+    
+    /* Adjust team member cards for mobile */
+    .card-container {
+        gap: 15px;
+        margin: 30px 0;
+    }
+    
+    .card {
+        width: 180px;
+        padding: 12px;
+    }
+    
+    .card img {
+        height: 120px;
+    }
+}
+
+/* Additional media query for very small screens (mobile phones) */
+@media (max-width: 480px) {
+    /* Further reduce team member card size */
+    .card {
+        width: 150px;
+        padding: 10px;
+    }
+    
+    .card img {
+        height: 100px;
+    }
+    
+    /* Reduce social icon size further */
+    .social-icons a {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+    
+    /* Adjust main content padding */
+    main {
+        padding: 15px;
+    }
+    
+    /* Reduce section margins */
+    section {
+        margin-bottom: 30px;
+    }
+    
+    /* Adjust heading sizes */
+    h2 {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+    }
+}
+/*Layout of paragraph on smaller devices*/
+@media (max-width: 600px) {
+    p {
+        font-size: 14px;
+        line-height: 1.4;
+    }
+}
+/* Ensuring images are responsive */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
