@@ -7,7 +7,7 @@ function initFormValidation() {
         setupRealTimeValidation(contactForm);
     }
 
-    // Enquiry form validation
+    // Enquiry form validation for user input
     const enquiryForm = document.getElementById('enquiryForm');
     if (enquiryForm) {
         enquiryForm.addEventListener('submit', handleEnquirySubmit);
