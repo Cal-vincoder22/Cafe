@@ -3,14 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Café Mocha | Contact Us</title>
+    <title>Café Mocha | Contact Us - Locations & Hours</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Contact Café Mocha in Rosebank, Johannesburg. Find our locations, hours, phone numbers, and send us a message. We're here to help!">
+    <meta name="keywords" content="contact Café Mocha, coffee shop Johannesburg, Rosebank café location, phone number, email contact">
+    
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    
+    <!-- Emergency CSS Fix -->
+    <style>
+        body { 
+            background-color: #f5f5f5 !important; 
+            color: #333 !important;
+        }
+        main { background-color: #f5f5f5; }
+        section { 
+            background-color: white; 
+            margin: 20px 0; 
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+    </style>
 </head>
-<body>
+<body class="visibility-fix">
     <header>
         <h1>Café Mocha</h1>
-        <img src="../Assets/WhatsApp Image 2025-08-25 at 21.04.14_2d31b423.jpg" width="200px" height="150px">
+        <img src="../Assets/WhatsApp Image 2025-08-25 at 21.04.14_2d31b423.jpg" width="200px" height="150px" alt="Café Mocha Logo - Premium Coffee Experience">
         <nav>
             <ul>
                 <li><a href="../index.html">Home</a></li>
@@ -24,7 +45,7 @@
 
     <main>
         <!-- Contact Us main section -->
-        <section>
+        <section class="locations-section">
             <h2>Our Locations</h2>
             <article>
                 <h3>Rosebank Main Café</h3>
@@ -38,7 +59,7 @@
             </article>
         </section>
 
-        <section>
+        <section class="contact-info">
             <h2>Contact Information</h2>
             <address>
                 <p>Phone: <a href="tel:+27683189672">+27 68 318 9672</a></p>
@@ -47,35 +68,117 @@
             </address>
         </section>
 
-        <section>
-            <h2>Map</h2>
-            <!-- Placeholder for map image -->
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2532.5161608013896!2d28.040176403698723!3d-26.14723152405135!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e950c8d37b50aaf%3A0x14ea91e5828c79e9!2sRosebank%20Mall!5e0!3m2!1sen!2sza!4v1755764790892!5m2!1sen!2sza"
-                           width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    
+        <section class="contact-form-section">
+            <h2>Send Us a Message</h2>
+            <form id="contactForm" class="contact-form">
+                <div class="form-group">
+                    <label for="contact-name">Full Name: *</label>
+                    <input type="text" id="contact-name" name="name" required minlength="2" placeholder="Your full name">
+                </div>
+                
+                <div class="form-group">
+                    <label for="contact-email">Email: *</label>
+                    <input type="email" id="contact-email" name="email" required placeholder="your.email@example.com">
+                </div>
+                
+                <div class="form-group">
+                    <label for="contact-phone">Phone:</label>
+                    <input type="tel" id="contact-phone" name="phone" placeholder="+27 12 345 6789">
+                </div>
+                
+                <div class="form-group">
+                    <label for="subject">Subject: *</label>
+                    <select id="subject" name="subject" required>
+                        <option value="">Select a subject...</option>
+                        <option value="general">General Inquiry</option>
+                        <option value="feedback">Feedback</option>
+                        <option value="complaint">Complaint</option>
+                        <option value="partnership">Partnership Opportunity</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="contact-message">Message: *</label>
+                    <textarea id="contact-message" name="message" rows="6" required minlength="10" placeholder="Your message..."></textarea>
+                    <small>Minimum 10 characters required</small>
+                </div>
+
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </section>
+
+        <section class="map-section">
+            <h2>Find Us</h2>
+            <div class="map-container">
+                <!-- Fixed iframe with proper referrerpolicy -->
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2532.5161608013896!2d28.040176403698723!3d-26.14723152405135!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e950c8d37b50aaf%3A0x14ea91e5828c79e9!2sRosebank%20Mall!5e0!3m2!1sen!2sza!4v1755764790892!5m2!1sen!2sza"
+                    width="100%" 
+                    height="400" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    title="Café Mocha Location at Rosebank Mall, Johannesburg"
+                    referrerpolicy="no-referrer">
+                </iframe>
+            </div>
         </section>
     </main>
-    <!-- Footer with copyright and address information -->
+
     <footer>
         <p style="text-align: center;">&copy; 2025 Café Mocha. </p>
         <address style="text-align: center;">
             Rosebank, Johannesburg, South Africa
         </address>
     </footer>
-     <!-- Social media icons section -->
-   <div class="social-icons">
-                <a href="http://www.instagram.com/" class="instagram" data-platform="Instagram">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="http://www.facebook.com" class="facebook" data-platform="Facebook">
-                    <i class="fab fa-facebook"></i>
-                </a>
-                <a href="http://www.twitter.com/" class="twitter" data-platform="Twitter">
-                    <i class="fab fa-twitter"></i>
-                </a>
-                <a href="http://www.tiktok.com/" class="tiktok" data-platform="TikTok">
-                    <i class="fab fa-tiktok"></i>
-                </a>
-            </div>
+
+    <!-- Social media icons section with proper titles -->
+    <div class="social-icons">
+        <a href="http://www.instagram.com/" class="instagram" data-platform="Instagram" title="Follow us on Instagram">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <a href="http://www.facebook.com" class="facebook" data-platform="Facebook" title="Like us on Facebook">
+            <i class="fab fa-facebook"></i>
+        </a>
+        <a href="http://www.twitter.com/" class="twitter" data-platform="Twitter" title="Follow us on Twitter">
+            <i class="fab fa-twitter"></i>
+        </a>
+        <a href="http://www.tiktok.com/" class="tiktok" data-platform="TikTok" title="Follow us on TikTok">
+            <i class="fab fa-tiktok"></i>
+        </a>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="../js/main.js"></script>
+    <script src="../js/forms.js"></script>
+    <script src="../js/map.js"></script>
+    
+    <!-- Emergency JavaScript Fix -->
+    <script>
+        // Force visibility on load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Ensure all text is visible
+            const allElements = document.querySelectorAll('*');
+            allElements.forEach(el => {
+                el.style.color = '#333';
+                el.style.backgroundColor = 'transparent';
+            });
+            
+            // Force section backgrounds
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                section.style.backgroundColor = 'white';
+                section.style.color = '#333';
+            });
+            
+            // Force form backgrounds
+            const forms = document.querySelectorAll('form');
+            forms.forEach(form => {
+                form.style.backgroundColor = 'white';
+                form.style.color = '#333';
+            });
+        });
+    </script>
 </body>
 </html>

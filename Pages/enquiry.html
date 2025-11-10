@@ -3,15 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Café Mocha | Enquiries</title>
+    <title>Café Mocha | Make an Enquiry - Coffee Catering & Events</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Make an enquiry with Café Mocha for catering, event bookings, wholesale coffee, or general questions. Get pricing and availability for our premium services.">
+    <meta name="keywords" content="coffee catering Johannesburg, event venue Rosebank, wholesale coffee beans, café enquiry, party booking">
+    <meta name="robots" content="index, follow">
+    
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    
+    <!-- Emergency CSS Fix -->
+    <style>
+        body { 
+            background-color: #f5f5f5 !important; 
+            color: #333 !important;
+        }
+        main { background-color: #f5f5f5; }
+        section { 
+            background-color: white; 
+            margin: 20px 0; 
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        form {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+    </style>
 </head>
-<body>
+<body class="visibility-fix">
     <header>
         <h1>Café Mocha</h1>
-        <img src="../Assets/WhatsApp Image 2025-08-25 at 21.04.14_2d31b423.jpg" width="200" height="150">
-         <nav>
+        <img src="../Assets/WhatsApp Image 2025-08-25 at 21.04.14_2d31b423.jpg" width="200" height="150" alt="Café Mocha Logo - Artisan Coffee Shop">
+        <nav>
             <ul>
                 <li><a href="../index.html">Home</a></li>
                 <li><a href="about.html">About Us</a></li>
@@ -24,66 +52,137 @@
 
     <main>
         <!-- Enquiry form section -->
-        <h2>Make an Enquiry</h2>
-        
-        <form>
-            <fieldset>
-                <legend>Your Information</legend>
-                <label for="name">Full Name:</label>
-                <input type="text" id="name" name="name" required>
-                
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-                
-                <label for="phone">Phone:</label>
-                <input type="tel" id="phone" name="phone">
-            </fieldset>
-
-            <fieldset>
-                <legend>Enquiry Details</legend>
-                <label for="enquiry-type">Enquiry Type:</label>
-                <select id="enquiry-type" name="enquiry-type">
-                    <option value="general">General Question</option>
-                    <option value="catering">Catering Request</option>
-                    <option value="events">Event Booking</option>
-                    <option value="wholesale">Wholesale Coffee</option>
-                    <option value="feedback">Feedback</option>
-                </select>
-                
-                <label for="message">Message:</label>
-                <textarea id="message" name="message" rows="5" required></textarea>
-            </fieldset>
-
-            <button type="submit">Submit Enquiry</button>
-           
-        </form>
-        
         <section>
+            <h2>Make an Enquiry</h2>
+            
+            <form id="enquiryForm" class="enquiry-form">
+                <fieldset>
+                    <legend>Your Information</legend>
+                    <div class="form-group">
+                        <label for="name">Full Name: *</label>
+                        <input type="text" id="name" name="name" required minlength="2" placeholder="Enter your full name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email: *</label>
+                        <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone: *</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="+27 12 345 6789" pattern="^[\+]?[0-9\s\-\(\)]{10,}$">
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Enquiry Details</legend>
+                    <div class="form-group">
+                        <label for="enquiry-type">Enquiry Type: *</label>
+                        <select id="enquiry-type" name="enquiry-type" required>
+                            <option value="">Please select...</option>
+                            <option value="general">General Question</option>
+                            <option value="catering">Catering Request</option>
+                            <option value="events">Event Booking</option>
+                            <option value="wholesale">Wholesale Coffee</option>
+                            <option value="feedback">Feedback</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="event-date">Event Date (if applicable):</label>
+                        <input type="date" id="event-date" name="event-date" min="<?php echo date('Y-m-d'); ?>">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="guests">Number of Guests (if applicable):</label>
+                        <input type="number" id="guests" name="guests" min="1" max="100" placeholder="e.g., 25">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message: *</label>
+                        <textarea id="message" name="message" rows="5" required minlength="10" placeholder="Please provide details about your enquiry..."></textarea>
+                        <small>Minimum 10 characters required</small>
+                    </div>
+                </fieldset>
+
+                <button type="submit" class="btn">Submit Enquiry</button>
+            </form>
+        </section>
+        
+        <section class="enquiry-info">
             <h3>Other Ways to Reach Us</h3>
-            <p>For immediate assistance, please call us at <a href="tel:+27111234567">+27 68 318 9672</a> during business hours.</p>
+            <p>For immediate assistance, please call us at <a href="tel:+27683189672">+27 68 318 9672</a> during business hours.</p>
+            
+            <div class="response-times">
+                <h4>Expected Response Times:</h4>
+                <ul>
+                    <li><strong>Catering Requests:</strong> Within 2 hours</li>
+                    <li><strong>Event Bookings:</strong> Within 4 hours</li>
+                    <li><strong>General Enquiries:</strong> Within 24 hours</li>
+                    <li><strong>Wholesale Coffee:</strong> Within 2 business days</li>
+                </ul>
+            </div>
         </section>
     </main>
-    <!-- Footer with copyright and address information -->
+
     <footer>
         <p style="text-align: center;">&copy; 2025 Café Mocha.</p>
         <address style="text-align: center;">
             Rosebank, Johannesburg, South Africa
         </address>
     </footer>
-     <!-- Social media icons section -->
+    
+    <!-- Social media icons section with proper titles -->
     <div class="social-icons">
-                <a href="http://www.instagram.com/" class="instagram" data-platform="Instagram">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="http://www.facebook.com" class="facebook" data-platform="Facebook">
-                    <i class="fab fa-facebook"></i>
-                </a>
-                <a href="http://www.twitter.com/" class="twitter" data-platform="Twitter">
-                    <i class="fab fa-twitter"></i>
-                </a>
-                <a href="http://www.tiktok.com/" class="tiktok" data-platform="TikTok">
-                    <i class="fab fa-tiktok"></i>
-                </a>
-            </div>
+        <a href="http://www.instagram.com/" class="instagram" data-platform="Instagram" title="Follow us on Instagram">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <a href="http://www.facebook.com" class="facebook" data-platform="Facebook" title="Like us on Facebook">
+            <i class="fab fa-facebook"></i>
+        </a>
+        <a href="http://www.twitter.com/" class="twitter" data-platform="Twitter" title="Follow us on Twitter">
+            <i class="fab fa-twitter"></i>
+        </a>
+        <a href="http://www.tiktok.com/" class="tiktok" data-platform="TikTok" title="Follow us on TikTok">
+            <i class="fab fa-tiktok"></i>
+        </a>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="../js/main.js"></script>
+    <script src="../js/forms.js"></script>
+    
+    <!-- Emergency JavaScript Fix -->
+    <script>
+        // Force visibility on load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Ensure all text is visible
+            const allElements = document.querySelectorAll('*');
+            allElements.forEach(el => {
+                el.style.color = '#333';
+                el.style.backgroundColor = 'transparent';
+            });
+            
+            // Force section backgrounds
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                section.style.backgroundColor = 'white';
+                section.style.color = '#333';
+            });
+            
+            // Force form backgrounds
+            const forms = document.querySelectorAll('form');
+            forms.forEach(form => {
+                form.style.backgroundColor = 'white';
+                form.style.color = '#333';
+            });
+            
+            // Force fieldset backgrounds
+            const fieldsets = document.querySelectorAll('fieldset');
+            fieldsets.forEach(fieldset => {
+                fieldset.style.backgroundColor = '#f9f9f9';
+            });
+        });
+    </script>
 </body>
 </html>

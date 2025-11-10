@@ -3,117 +3,368 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Café Mocha | About Us</title>
+    <title>Café Mocha | About Us - Our Story, Mission & Team</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Learn about Café Mocha's story, mission, and passionate team. Discover our commitment to quality coffee, sustainable practices, and community in Rosebank, Johannesburg.">
+    <meta name="keywords" content="Café Mocha story, about our coffee shop, Johannesburg café history, ethical coffee sourcing, café team, sustainable practices">
+    
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
 </head>
 <body>
     <!-- Header section with logo and navigation -->
-    <header>
-        <h1>Café Mocha</h1>
-        <!-- Café logo/image -->
-        <img src="../Assets/WhatsApp Image 2025-08-25 at 21.04.14_2d31b423.jpg" width="200" height="150">
-        <!-- Main navigation menu -->
-        <nav>
-            <ul>
-                <li><a href="../index.html">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="menu.html">Menu</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="enquiry.html">Enquiries</a></li>
-            </ul>
-        </nav>
+    <header class="sticky-header">
+        <div class="header-container">
+            <div class="logo-section">
+                <img src="../Assets/WhatsApp Image 2025-08-25 at 21.04.14_2d31b423.jpg" width="80" height="60" alt="Café Mocha Logo" class="logo">
+                <h1>Café Mocha</h1>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="../index.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link active">About Us</a></li>
+                    <li><a href="menu.html" class="nav-link">Menu</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                    <li><a href="enquiry.html" class="nav-link">Enquiries</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
     </header>
 
     <!-- Main content of the about page -->
     <main>
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <h1 class="page-title">About Café Mocha</h1>
+                <p class="page-subtitle">Our story, our passion, our commitment to excellence</p>
+            </div>
+        </section>
+
         <!-- Our Story section -->
-        <section>
-            <h2>Our Story</h2>
-            <p>Founded in 2018, Café Mocha began as a small family-run coffee shop and has blossomed into a cherished community hub, all thanks to the passionate vision of its founder, Mr. Mpho Calvin. His dedication to crafting the perfect cup, using only the finest ethically sourced beans, is matched only by his warm, welcoming presence. Stepping into Café Mocha is like being welcomed into Mpho's own home, where the rich aroma of expertly roasted coffee mingles with the sound of friendly conversation, creating a genuine sanctuary that nourishes both the body and the soul.
-            </p>
+        <section class="story-section">
+            <div class="container">
+                <div class="story-content">
+                    <div class="story-text">
+                        <h2>Our Story</h2>
+                        <p>Founded in 2018, Café Mocha began as a small family-run coffee shop and has blossomed into a cherished community hub, all thanks to the passionate vision of its founder, Mr. Mpho Calvin.</p>
+                        <p>His dedication to crafting the perfect cup, using only the finest ethically sourced beans, is matched only by his warm, welcoming presence. Stepping into Café Mocha is like being welcomed into Mpho's own home, where the rich aroma of expertly roasted coffee mingles with the sound of friendly conversation.</p>
+                        <p>What started as a dream to share exceptional coffee with Johannesburg has grown into a genuine sanctuary that nourishes both the body and the soul.</p>
+                        
+                        <div class="milestones">
+                            <div class="milestone">
+                                <div class="year">2018</div>
+                                <div class="event">Café Mocha Founded</div>
+                            </div>
+                            <div class="milestone">
+                                <div class="year">2019</div>
+                                <div class="event">Expanded to Full Kitchen</div>
+                            </div>
+                            <div class="milestone">
+                                <div class="year">2020</div>
+                                <div class="event">Community Favorite Award</div>
+                            </div>
+                            <div class="milestone">
+                                <div class="year">2023</div>
+                                <div class="event">Sustainability Certification</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="story-image">
+                        <img src="../Assets/WhatsApp Image 2025-10-07 at 21.20.39_8551e427.jpg" alt="Café Mocha founder Mpho Calvin in the coffee shop" loading="lazy">
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- Our Mission section -->
-        <section>
-            <h2>Our Mission</h2>
-            <p>
-                At Café Mocha, our mission is deeply rooted in a commitment to excellence and connection. We meticulously source premium, ethically grown coffee beans, roasting them in-house to unlock their fullest flavor and complexity, ensuring every espresso shot poured and every cup brewed is nothing short of exceptional. This dedication extends to our bakery, where we craft fresh, artisanal pastries daily, using local ingredients to create delightful companions to your beverage.
-
-Beyond what we serve, we are devoted to cultivating an atmosphere of genuine warmth and inclusivity. We strive to be more than just a coffee shop; we aim to be a vital gathering place—a comfortable living room for our community where conversations flourish, ideas are born, and everyone feels a sense of belonging. From the friendly smile that greets you to the carefully curated ambiance, every detail is designed to create a welcoming space where you can relax, recharge, and feel at home.
-            </p>
+        <section class="mission-section">
+            <div class="container">
+                <div class="mission-content">
+                    <div class="mission-image">
+                        <img src="../Assets/coffee-beans-closeup.jpg" alt="Premium ethically sourced coffee beans" loading="lazy">
+                    </div>
+                    <div class="mission-text">
+                        <h2>Our Mission</h2>
+                        <p>At Café Mocha, our mission is deeply rooted in a commitment to excellence and connection. We meticulously source premium, ethically grown coffee beans, roasting them in-house to unlock their fullest flavor and complexity.</p>
+                        <p>This dedication extends to our bakery, where we craft fresh, artisanal pastries daily, using local ingredients to create delightful companions to your beverage.</p>
+                        <p>Beyond what we serve, we are devoted to cultivating an atmosphere of genuine warmth and inclusivity. We strive to be more than just a coffee shop; we aim to be a vital gathering place—a comfortable living room for our community.</p>
+                        
+                        <div class="mission-stats">
+                            <div class="mission-stat">
+                                <span class="stat-number">100%</span>
+                                <span class="stat-label">Ethically Sourced</span>
+                            </div>
+                            <div class="mission-stat">
+                                <span class="stat-number">Daily</span>
+                                <span class="stat-label">Fresh Baking</span>
+                            </div>
+                            <div class="mission-stat">
+                                <span class="stat-number">Local</span>
+                                <span class="stat-label">Ingredients</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <!-- Our Values section with bullet points -->
-        <section>
-            <h2>Our Values</h2>
-            <ul>
-                <li>Quality ingredients sourced locally when possible</li>
-                <li>Sustainable practices in our operations</li>
-                <li>Excellent customer service</li>
-                <li>Supporting local artists and musicians</li>
-            </ul>
+        <!-- Our Values section -->
+        <section class="values-section">
+            <div class="container">
+                <h2>Our Values</h2>
+                <div class="values-grid">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h3>Sustainability</h3>
+                        <p>We implement eco-friendly practices, from compostable packaging to energy-efficient equipment and waste reduction programs.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3>Quality</h3>
+                        <p>Every ingredient is carefully selected, every recipe perfected, and every cup crafted with attention to detail and passion.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h3>Community</h3>
+                        <p>We support local artists, musicians, and suppliers, creating a space that celebrates and strengthens our community.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-recycle"></i>
+                        </div>
+                        <h3>Ethical Sourcing</h3>
+                        <p>Our coffee beans are sourced from farms that practice fair trade and sustainable agriculture methods.</p>
+                    </div>
+                </div>
+                
+                <div class="values-list">
+                    <h3>What Guides Us</h3>
+                    <ul>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span>Quality ingredients sourced locally when possible</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span>Sustainable practices in our operations</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span>Excellent customer service as our standard</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span>Supporting local artists and musicians</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span>Continuous improvement and innovation</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </section>
 
-        <!-- Team section with individual cards for each team member -->
-        <section>
-            <h2>meet our team</h2>
-            <!-- Container for team member cards -->
-            <div class="card-container">
-                <!-- Individual team member card -->
-                <div class="card">
-                    <img src="../Assets/WhatsApp Image 2025-09-17 at 16.35.05_8217a4c4.jpg" alt="Team Member 1">
-                    <h3>Calvin Mpho</h3>
-                    <p>Founder</p>
+        <!-- Team section -->
+        <section class="team-section">
+            <div class="container">
+                <h2>Meet Our Team</h2>
+                <p class="team-intro">Our passionate team of coffee experts and culinary artists are dedicated to creating exceptional experiences for every customer.</p>
+                
+                <div class="card-container">
+                    <div class="card team-card">
+                        <div class="card-image">
+                            <img src="../Assets/WhatsApp Image 2025-09-17 at 16.35.05_8217a4c4.jpg" alt="Calvin Mpho - Founder of Café Mocha">
+                            <div class="card-overlay">
+                                <div class="social-links">
+                                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                                    <a href="#"><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Calvin Mpho</h3>
+                            <p class="position">Founder & CEO</p>
+                            <p class="bio">With over 10 years in the coffee industry, Calvin's passion for perfect coffee drives our entire operation.</p>
+                            <div class="expertise">
+                                <span class="expertise-tag">Coffee Roasting</span>
+                                <span class="expertise-tag">Business Strategy</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card team-card">
+                        <div class="card-image">
+                            <img src="../Assets/WhatsApp Image 2025-09-17 at 16.36.41_1c92382c.jpg" alt="Talifhani Tshivhase - Pastry Chef">
+                            <div class="card-overlay">
+                                <div class="social-links">
+                                    <a href="#"><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Talifhani Tshivhase</h3>
+                            <p class="position">Pastry Chef</p>
+                            <p class="bio">Trained in Paris, Talifhani brings European techniques to create our signature pastries and desserts.</p>
+                            <div class="expertise">
+                                <span class="expertise-tag">French Pastry</span>
+                                <span class="expertise-tag">Artisan Baking</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card team-card">
+                        <div class="card-image">
+                            <img src="../Assets/WhatsApp Image 2025-09-17 at 16.38.52_110c8fd9.jpg" alt="Emily Lee - Marketing Manager">
+                            <div class="card-overlay">
+                                <div class="social-links">
+                                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Emily Lee</h3>
+                            <p class="position">Marketing Manager</p>
+                            <p class="bio">Emily connects our brand with the community through creative campaigns and authentic storytelling.</p>
+                            <div class="expertise">
+                                <span class="expertise-tag">Digital Marketing</span>
+                                <span class="expertise-tag">Brand Strategy</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card team-card">
+                        <div class="card-image">
+                            <img src="../Assets/WhatsApp Image 2025-09-17 at 16.43.09_8a5ee0dc.jpg" alt="Ray William - Head Barista">
+                            <div class="card-overlay">
+                                <div class="social-links">
+                                    <a href="#"><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Ray William</h3>
+                            <p class="position">Head Barista</p>
+                            <p class="bio">Ray has won multiple barista competitions and trains our team in the art of perfect coffee preparation.</p>
+                            <div class="expertise">
+                                <span class="expertise-tag">Latte Art</span>
+                                <span class="expertise-tag">Coffee Training</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <!-- Individual team member card -->
-                <div class="card">
-                    <img src="../Assets/WhatsApp Image 2025-09-17 at 16.36.41_1c92382c.jpg" alt="Team Member 2">
-                    <h3>Talifhani Tshivhase</h3>
-                    <p>Pastry Chef</p>
-                </div>
-                <!-- Individual team member card -->
-                <div class="card">
-                    <img src="../Assets/WhatsApp Image 2025-09-17 at 16.38.52_110c8fd9.jpg" alt="Team Member 3">
-                    <h3>Emily Lee</h3>
-                    <p>Marketing Manager</p>
-                </div>
-                <!-- Individual team member card -->
-                <div class="card">
-                    <img src="../Assets/WhatsApp Image 2025-09-17 at 16.43.09_8a5ee0dc.jpg" alt="Team Member 4">
-                    <h3>Ray William</h3>
-                    <p>Head Barista</p>
+            </div>
+        </section>
+
+        <!-- Community Involvement Section -->
+        <section class="community-section">
+            <div class="container">
+                <h2>Community Involvement</h2>
+                <div class="community-content">
+                    <div class="community-text">
+                        <h3>Giving Back to Rosebank</h3>
+                        <p>At Café Mocha, we believe in being more than just a business. We're an active member of the Rosebank community, supporting local initiatives and creating spaces for connection.</p>
+                        
+                        <div class="community-initiatives">
+                            <div class="initiative">
+                                <i class="fas fa-music"></i>
+                                <div>
+                                    <h4>Live Music Nights</h4>
+                                    <p>Every Friday featuring local musicians and artists</p>
+                                </div>
+                            </div>
+                            <div class="initiative">
+                                <i class="fas fa-palette"></i>
+                                <div>
+                                    <h4>Art Exhibitions</h4>
+                                    <p>Rotating displays of local artists' work on our walls</p>
+                                </div>
+                            </div>
+                            <div class="initiative">
+                                <i class="fas fa-hand-holding-heart"></i>
+                                <div>
+                                    <h4>Charity Partnerships</h4>
+                                    <p>Monthly donations to local food banks and shelters</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="community-image">
+                        <img src="../Assets/community-event.jpg" alt="Café Mocha community event with local artists" loading="lazy">
+                    </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Footer with copyright and address information -->
+    <!-- Footer -->
     <footer>
-        <p style="text-align: center;">&copy; 2025 Café Mocha.</p>
-        <address style="text-align: center;">
-            Rosebank, Johannesburg, South Africa
-        </address>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Café Mocha</h4>
+                <p>Creating community through coffee since 2018.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact Info</h4>
+                <p><i class="fas fa-map-marker-alt"></i> Rosebank, Johannesburg</p>
+                <p><i class="fas fa-phone"></i> +27 68 318 9672</p>
+                <p><i class="fas fa-envelope"></i> info@cafemocha.co.za</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Café Mocha. All rights reserved.</p>
+            <address>
+                Rosebank, Johannesburg, South Africa
+            </address>
+        </div>
     </footer>
     
     <!-- Social media icons section -->
     <div class="social-icons">
-        <!-- Instagram link -->
         <a href="http://www.instagram.com/" class="instagram" data-platform="Instagram">
             <i class="fab fa-instagram"></i>
         </a>
-        <!-- Facebook link -->
         <a href="http://www.facebook.com" class="facebook" data-platform="Facebook">
             <i class="fab fa-facebook"></i>
         </a>
-        <!-- Twitter link -->
         <a href="http://www.twitter.com/" class="twitter" data-platform="Twitter">
             <i class="fab fa-twitter"></i>
         </a>
-        <!-- TikTok link -->
         <a href="http://www.tiktok.com/" class="tiktok" data-platform="TikTok">
             <i class="fab fa-tiktok"></i>
         </a>
     </div>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- JavaScript Files -->
+    <script src="../javascript/main.js"></script>
+    <script src="../javascript/about-animations.js"></script>
 </body>
 </html>

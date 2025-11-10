@@ -3,139 +3,544 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Café Mocha | Our Menu</title>
+    <title>Café Mocha | Our Menu - Coffee, Drinks & Food</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Explore Café Mocha's full menu featuring artisan coffee, specialty drinks, fresh pastries, sandwiches, and delicious food. Gluten-free and vegan options available.">
+    <meta name="keywords" content="coffee menu Johannesburg, café food Rosebank, artisan coffee, pastries, sandwiches, breakfast menu, gluten-free options">
+    
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
 </head>
-</head>
 <body>
-    <header>
-        <h1>Café Mocha</h1>
-        <img src="../Assets/WhatsApp Image 2025-08-25 at 21.04.14_2d31b423.jpg" width="200px" height="150px">
-        <nav>
-            <ul>
-                <li><a href="../index.html">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="menu.html">Menu</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="enquiry.html">Enquiries</a></li>
-            </ul>
-        </nav>
+    <!-- Enhanced Header matching homepage -->
+    <header class="sticky-header">
+        <div class="header-container">
+            <div class="logo-section">
+                <img src="../Assets/WhatsApp Image 2025-08-25 at 21.04.14_2d31b423.jpg" width="80" height="60" alt="Café Mocha Logo - Artisan Coffee & Food" class="logo">
+                <h1>Café Mocha</h1>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="../index.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About Us</a></li>
+                    <li><a href="menu.html" class="nav-link active">Menu</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                    <li><a href="enquiry.html" class="nav-link">Enquiries</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
     </header>
 
     <main>
-        <!-- Menu section -->
-        <h2>Our Menu</h2>
-        
-        <section>
-            <h3>Coffee & Drinks</h3>
-            <div class="menu-category">
-                <div class="menu-card">
-                    <img src="/Assets/images (2).jpeg" alt="Espresso">
-                    <div class="card-content">
-                        <strong>Espresso</strong>
-                        <div class="price">R25</div>
-                        <p>Single or double shot of our premium blend</p>
-                    </div>
-                </div>
+        <!-- Menu Header with Search -->
+        <section class="menu-header fade-in">
+            <h2>Our Menu</h2>
+            <p class="menu-description">Discover our carefully crafted selection of artisan coffee, specialty drinks, and freshly prepared food</p>
+            
+            <!-- Search Functionality -->
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Search menu items... (e.g., 'cappuccino', 'croissant', 'gluten-free')">
+                <div class="search-results"></div>
+            </div>
+
+            <!-- Quick Navigation -->
+            <div class="menu-categories">
+                <button class="category-btn active" data-category="all">All Items</button>
+                <button class="category-btn" data-category="drinks">Drinks</button>
+                <button class="category-btn" data-category="food">Food</button>
+                <button class="category-btn" data-category="coffee-beans">Coffee Beans</button>
+            </div>
+        </section>
+
+        <!-- Video Section -->
+        <section class="video-section fade-in">
+            <div class="video-container">
+                <h3>Experience Café Mocha</h3>
+                <p class="video-description">Watch how we craft your favorite drinks and prepare our delicious food</p>
                 
-                <div class="menu-card">
-                    <img src="/Assets/drew-coffman-tZKwLRO904E-unsplash.jpg" alt="Cappuccino">
-                    <div class="card-content">
-                        <strong>Cappuccino</strong>
-                        <div class="price">R32</div>
-                        <p>Espresso with steamed milk and foam</p>
+                <div class="video-grid">
+                    <!-- Coffee Making Video -->
+                    <div class="video-card">
+                        <div class="video-wrapper">
+                            <video controls poster="../Assets/drew-coffman-tZKwLRO904E-unsplash.jpg" class="menu-video">
+                                <source src="../Assets/WhatsApp Video 2025-11-07 at 13.45.53_5a3617a0.mp4" type="video/mp4">
+                                <source src="" type="video/webm">
+                            </video>
+                            <div class="video-overlay">
+                                <button class="play-btn">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <h4>Artisan Coffee Crafting</h4>
+                            <p>Watch our baristas create perfect espresso shots and beautiful latte art</p>
+                            <div class="video-duration">
+                                <i class="far fa-clock"></i>
+                                <span>2:30</span>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="menu-card">
-                    <img src="/Assets/hot-chocolate-coffee-7.jpg" alt="Mocha">
-                    <div class="card-content">
-                        <strong>Mocha</strong>
-                        <div class="price">R35</div>
-                        <p>Our signature drink with chocolate and espresso</p>
+
+                    <!-- Food Preparation Video -->
+                    <div class="video-card">
+                        <div class="video-wrapper">
+                            <video controls poster="../Assets/food-video-poster.jpg" class="menu-video">
+                                <source src="../Assets/WhatsApp Video 2025-11-09 at 22.55.44_66c916ef.mp4" type="video/mp4">
+                                <source src="../Assets/food-preparation.webm" type="video/webm">
+                                
+                            </video>
+                            <div class="video-overlay">
+                                <button class="play-btn">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <h4>Fresh Food Preparation</h4>
+                            <p>See how we prepare our daily pastries and fresh sandwiches</p>
+                            <div class="video-duration">
+                                <i class="far fa-clock"></i>
+                                <span>3:15</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Café Atmosphere Video -->
+                    <div class="video-card">
+                        <div class="video-wrapper">
+                            <video controls poster="../Assets/atmosphere-video-poster.jpg" class="menu-video">
+                                <source src="../Assets/WhatsApp Video 2025-11-09 at 22.55.40_d2cb7dca.mp4" type="video/mp4">
+                                <source src="../Assets/cafe-atmosphere.webm" type="video/webm">
+                                
+                            </video>
+                            <div class="video-overlay">
+                                <button class="play-btn">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <h4>Our Café Atmosphere</h4>
+                            <p>Experience the warm and cozy ambiance of Café Mocha</p>
+                            <div class="video-duration">
+                                <i class="far fa-clock"></i>
+                                <span>1:45</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
-        <!-- Pastries & Snacks section -->
-        <section>
-            <h3>Pastries & Snacks</h3>
-            <div class="menu-category">
-                <div class="menu-card">
-                    <img src="/Assets/download.jpeg" alt="Croissant">
-                    <div class="card-content">
-                        <strong>Croissant</strong>
-                        <div class="price">R28</div>
-                        <p>Plain, chocolate, or almond</p>
+
+        <!-- Drinks Section -->
+        <section class="menu-section fade-in" data-category="drinks">
+            <h3><i class="fas fa-coffee"></i> Coffee & Drinks</h3>
+            
+            <!-- Hot Coffee -->
+            <div class="menu-subcategory">
+                <h4>Hot Coffee</h4>
+                <div class="menu-category">
+                    <div class="menu-card" data-categories="drinks coffee hot" data-search="espresso single double shot premium">
+                        <img src="../Assets/images (2).jpeg" alt="Rich espresso coffee in a ceramic cup" loading="lazy">
+                        <div class="card-content">
+                            <strong>Espresso</strong>
+                            <div class="price">R25</div>
+                            <p>Single or double shot of our premium blend</p>
+                            <div class="item-options">
+                                <span class="option">Single | Double +R10</span>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="menu-card">
-                    <img src="/Assets/612fa5589ef1e50018f92c83.webp" alt="Muffin">
-                    <div class="card-content">
-                        <strong>Muffin</strong>
-                        <div class="price">R25</div>
-                        <p>Daily selection of flavors</p>
+                    
+                    <div class="menu-card" data-categories="drinks coffee hot" data-search="cappuccino espresso steamed milk foam">
+                        <img src="../Assets/drew-coffman-tZKwLRO904E-unsplash.jpg" alt="Creamy cappuccino with latte art" loading="lazy">
+                        <div class="card-content">
+                            <strong>Cappuccino</strong>
+                            <div class="price">R32</div>
+                            <p>Espresso with steamed milk and dense foam</p>
+                            <div class="item-options">
+                                <span class="option">Small | Medium | Large</span>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="menu-card">
-                    <img src="/Assets/AR-24148-easy-broccoli-quiche-beauty-4x3-e73d1f8a3a7c466f86f8b6cf33e76050.jpg" alt="Quiche">
-                    <div class="card-content">
-                        <strong>Quiche</strong>
-                        <div class="price">R45</div>
-                        <p>Vegetable or bacon options</p>
+                    
+                    <div class="menu-card" data-categories="drinks coffee hot" data-search="mocha chocolate signature espresso">
+                        <img src="../Assets/hot-chocolate-coffee-7.jpg" alt="Delicious mocha with chocolate and coffee" loading="lazy">
+                        <div class="card-content">
+                            <strong>Mocha</strong>
+                            <div class="price">R35</div>
+                            <p>Our signature drink with chocolate and espresso</p>
+                            <div class="item-options">
+                                <span class="option">Dark | Milk | White Chocolate</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-card" data-categories="drinks coffee hot" data-search="latte espresso steamed milk smooth">
+                        <img src="../Assets/latte.jpg" alt="Smooth latte with beautiful latte art" loading="lazy">
+                        <div class="card-content">
+                            <strong>Latte</strong>
+                            <div class="price">R30</div>
+                            <p>Espresso with steamed milk, smooth and creamy</p>
+                            <div class="item-options">
+                                <span class="option">Small | Medium | Large</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-card" data-categories="drinks coffee hot" data-search="americano espresso hot water">
+                        <img src="../Assets/americano.jpg" alt="American coffee in a glass cup" loading="lazy">
+                        <div class="card-content">
+                            <strong>Americano</strong>
+                            <div class="price">R28</div>
+                            <p>Espresso shots with hot water, rich and bold</p>
+                            <div class="item-options">
+                                <span class="option">Single | Double Shot</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-card" data-categories="drinks coffee hot" data-search="flat white espresso microfoam">
+                        <img src="../Assets/flat-white.jpg" alt="Flat white coffee with velvety texture" loading="lazy">
+                        <div class="card-content">
+                            <strong>Flat White</strong>
+                            <div class="price">R33</div>
+                            <p>Espresso with velvety microfoam, stronger than latte</p>
+                        </div>
                     </div>
                 </div>
             </div>
-            <p><em>Ask about our gluten-free and vegan options!</em></p>
+
+            <!-- Iced & Cold Drinks -->
+            <div class="menu-subcategory">
+                <h4>Iced & Cold Drinks</h4>
+                <div class="menu-category">
+                    <div class="menu-card" data-categories="drinks coffee cold iced" data-search="iced coffee cold brew summer">
+                        <img src="../Assets/iced-coffee.jpg" alt="Refreshing iced coffee with ice cubes" loading="lazy">
+                        <div class="card-content">
+                            <strong>Iced Coffee</strong>
+                            <div class="price">R35</div>
+                            <p>Chilled coffee served over ice, sweetened to taste</p>
+                            <div class="item-options">
+                                <span class="option">Add vanilla +R5</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-card" data-categories="drinks coffee cold" data-search="cold brew smooth less acidic">
+                        <img src="../Assets/cold-brew.jpg" alt="Smooth cold brew coffee in a glass" loading="lazy">
+                        <div class="card-content">
+                            <strong>Cold Brew</strong>
+                            <div class="price">R38</div>
+                            <p>Slow-steeped for 18 hours, smooth and less acidic</p>
+                        </div>
+                    </div>
+
+                    <div class="menu-card" data-categories="drinks tea" data-search="iced tea refreshing fruit">
+                        <img src="../Assets/iced-tea.jpg" alt="Fruit-infused iced tea with mint" loading="lazy">
+                        <div class="card-content">
+                            <strong>Iced Tea</strong>
+                            <div class="price">R28</div>
+                            <p>Freshly brewed tea served over ice with lemon</p>
+                            <div class="item-options">
+                                <span class="option">Peach | Berry | Lemon</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tea & Other Beverages -->
+            <div class="menu-subcategory">
+                <h4>Tea & Other Beverages</h4>
+                <div class="menu-category">
+                    <div class="menu-card" data-categories="drinks tea" data-search="english breakfast tea classic">
+                        <img src="../Assets/english-breakfast-tea.jpg" alt="Classic English Breakfast tea in a teapot" loading="lazy">
+                        <div class="card-content">
+                            <strong>English Breakfast</strong>
+                            <div class="price">R25</div>
+                            <p>Classic black tea blend, robust and full-bodied</p>
+                        </div>
+                    </div>
+
+                    <div class="menu-card" data-categories="drinks tea" data-search="green tea antioxidant healthy">
+                        <img src="../Assets/green-tea.jpg" alt="Green tea with tea leaves" loading="lazy">
+                        <div class="card-content">
+                            <strong>Green Tea</strong>
+                            <div class="price">R25</div>
+                            <p>Light and refreshing with antioxidant benefits</p>
+                        </div>
+                    </div>
+
+                    <div class="menu-card" data-categories="drinks tea" data-search="chamomile herbal relaxing">
+                        <img src="../Assets/chamomile-tea.jpg" alt="Soothing chamomile herbal tea" loading="lazy">
+                        <div class="card-content">
+                            <strong>Chamomile</strong>
+                            <div class="price">R25</div>
+                            <p>Soothing herbal tea, perfect for relaxation</p>
+                        </div>
+                    </div>
+
+                    <div class="menu-card" data-categories="drinks hot-chocolate" data-search="hot chocolate creamy rich">
+                        <img src="../Assets/hot-chocolate.jpg" alt="Rich and creamy hot chocolate" loading="lazy">
+                        <div class="card-content">
+                            <strong>Hot Chocolate</strong>
+                            <div class="price">R32</div>
+                            <p>Rich, creamy chocolate drink topped with marshmallows</p>
+                            <div class="item-options">
+                                <span class="option">Dark | Milk | White</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
-        <!-- Retail Coffee Beans section -->
-        <section>
-            <h3>Retail Coffee Beans</h3>
+
+        <!-- Food Section -->
+        <section class="menu-section fade-in" data-category="food">
+            <h3><i class="fas fa-utensils"></i> Food & Pastries</h3>
+            
+            <!-- Pastries -->
+            <div class="menu-subcategory">
+                <h4>Fresh Pastries</h4>
+                <div class="menu-category">
+                    <div class="menu-card" data-categories="food pastries breakfast" data-search="croissant buttery flaky plain chocolate almond">
+                        <img src="../Assets/download.jpeg" alt="Fresh buttery croissant on a plate" loading="lazy">
+                        <div class="card-content">
+                            <strong>Croissant</strong>
+                            <div class="price">R28</div>
+                            <p>Buttery, flaky pastry baked fresh daily</p>
+                            <div class="item-options">
+                                <span class="option">Plain | Chocolate | Almond</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-card" data-categories="food pastries" data-search="muffin blueberry chocolate banana daily flavors">
+                        <img src="../Assets/612fa5589ef1e50018f92c83.webp" alt="Assorted fresh muffins on display" loading="lazy">
+                        <div class="card-content">
+                            <strong>Muffin</strong>
+                            <div class="price">R25</div>
+                            <p>Freshly baked, moist and flavorful</p>
+                            <div class="item-options">
+                                <span class="option">Blueberry | Chocolate | Banana</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-card" data-categories="food pastries" data-search="cinnamon roll sweet icing">
+                        <img src="../Assets/cinnamon-roll.jpg" alt="Warm cinnamon roll with cream cheese icing" loading="lazy">
+                        <div class="card-content">
+                            <strong>Cinnamon Roll</strong>
+                            <div class="price">R32</div>
+                            <p>Soft, sweet roll with cinnamon and cream cheese icing</p>
+                        </div>
+                    </div>
+
+                    <div class="menu-card" data-categories="food pastries" data-search="scone cream jam british">
+                        <img src="../Assets/scone.jpg" alt="Traditional British scones with jam and cream" loading="lazy">
+                        <div class="card-content">
+                            <strong>Fruit Scone</strong>
+                            <div class="price">R26</div>
+                            <p>Traditional British scone with dried fruits</p>
+                            <div class="item-options">
+                                <span class="option">Served with jam & cream</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sandwiches & Savories -->
+            <div class="menu-subcategory">
+                <h4>Sandwiches & Savories</h4>
+                <div class="menu-category">
+                    <div class="menu-card" data-categories="food sandwiches lunch" data-search="quiche vegetable bacon lorraine">
+                        <img src="../Assets/AR-24148-easy-broccoli-quiche-beauty-4x3-e73d1f8a3a7c466f86f8b6cf33e76050.jpg" alt="Fresh vegetable quiche slice" loading="lazy">
+                        <div class="card-content">
+                            <strong>Quiche</strong>
+                            <div class="price">R45</div>
+                            <p>Savory pastry with egg and vegetable filling</p>
+                            <div class="item-options">
+                                <span class="option">Vegetable | Bacon | Lorraine</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-card" data-categories="food sandwiches lunch" data-search="club sandwich turkey bacon avocado">
+                        <img src="../Assets/club-sandwich.jpg" alt="Triple-decker club sandwich with turkey and bacon" loading="lazy">
+                        <div class="card-content">
+                            <strong>Club Sandwich</strong>
+                            <div class="price">R65</div>
+                            <p>Triple-decker with turkey, bacon, lettuce, tomato & mayo</p>
+                            <div class="item-options">
+                                <span class="option">Add avocado +R15</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-card" data-categories="food sandwiches lunch" data-search="panini pressed grilled cheese">
+                        <img src="../Assets/panini.jpg" alt="Grilled panini with melted cheese" loading="lazy">
+                        <div class="card-content">
+                            <strong>Italian Panini</strong>
+                            <div class="price">R55</div>
+                            <p>Pressed sandwich with mozzarella, tomato, and pesto</p>
+                            <div class="item-options">
+                                <span class="option">Chicken | Vegetarian</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-card" data-categories="food sandwiches lunch" data-search="bagel cream cheese smoked salmon">
+                        <img src="../Assets/bagel.jpg" alt="Fresh bagel with cream cheese and salmon" loading="lazy">
+                        <div class="card-content">
+                            <strong>Bagel</strong>
+                            <div class="price">R42</div>
+                            <p>Freshly baked bagel with your choice of spread</p>
+                            <div class="item-options">
+                                <span class="option">Cream Cheese | Smoked Salmon</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Breakfast -->
+            <div class="menu-subcategory">
+                <h4>Breakfast</h4>
+                <div class="menu-category">
+                    <div class="menu-card" data-categories="food breakfast" data-search="avocado toast healthy poached egg">
+                        <img src="../Assets/avocado-toast.jpg" alt="Avocado toast with poached eggs" loading="lazy">
+                        <div class="card-content">
+                            <strong>Avocado Toast</strong>
+                            <div class="price">R58</div>
+                            <p>Smashed avocado on artisan bread with cherry tomatoes</p>
+                            <div class="item-options">
+                                <span class="option">Add poached egg +R12</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-card" data-categories="food breakfast" data-search="breakfast bowl yogurt granola fruit">
+                        <img src="../Assets/yogurt-bowl.jpg" alt="Yogurt breakfast bowl with granola and fruits" loading="lazy">
+                        <div class="card-content">
+                            <strong>Yogurt Bowl</strong>
+                            <div class="price">R45</div>
+                            <p>Greek yogurt with granola, fresh fruits and honey</p>
+                            <div class="item-options">
+                                <span class="option">Add extra fruit +R8</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dietary-notes">
+                <p><i class="fas fa-seedling"></i> <strong>Dietary Notes:</strong> We offer gluten-free bread and vegan options. Please inform staff of any allergies.</p>
+                <p><em>All our pastries are baked fresh daily using local ingredients!</em></p>
+            </div>
+        </section>
+
+        <!-- Retail Coffee Beans Section -->
+        <section class="menu-section fade-in" data-category="coffee-beans">
+            <h3><i class="fas fa-coffee-beans"></i> Retail Coffee Beans</h3>
             <div class="menu-category">
-                <div class="menu-card">
-                    <img src="/Assets/Southern-Estate-Medium-Roast-02-scaled-1.webp" alt="House Blend Coffee Beans">
+                <div class="menu-card" data-categories="coffee-beans" data-search="house blend medium roast chocolate">
+                    <img src="../Assets/Southern-Estate-Medium-Roast-02-scaled-1.webp" alt="House blend coffee beans medium roast" loading="lazy">
                     <div class="card-content">
                         <strong>House Blend</strong>
                         <div class="price">R120/250g</div>
-                        <p>Medium roast with chocolate notes</p>
+                        <p>Medium roast with chocolate and nut notes, well-balanced</p>
+                        <div class="item-options">
+                            <span class="option">Also available in 500g</span>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="menu-card">
-                    <img src="/Assets/ethiopia.webp" alt="Ethiopian Coffee Beans">
+                <div class="menu-card" data-categories="coffee-beans" data-search="ethiopia single origin fruity floral">
+                    <img src="../Assets/ethiopia.webp" alt="Ethiopian single origin coffee beans" loading="lazy">
                     <div class="card-content">
                         <strong>Single Origin Ethiopia</strong>
                         <div class="price">R150/250g</div>
-                        <p>Fruity and floral light roast</p>
+                        <p>Fruity and floral light roast with berry undertones</p>
+                    </div>
+                </div>
+
+                <div class="menu-card" data-categories="coffee-beans" data-search="colombia dark roast bold">
+                    <img src="../Assets/colombia-beans.jpg" alt="Colombian dark roast coffee beans" loading="lazy">
+                    <div class="card-content">
+                        <strong>Colombia Dark Roast</strong>
+                        <div class="price">R135/250g</div>
+                        <p>Bold and rich with caramel and dark chocolate notes</p>
                     </div>
                 </div>
             </div>
         </section>
     </main>
-    <!-- Footer with copyright and address information -->
+
     <footer>
-        <p>&copy; 2025 Café Mocha.</p>
-        <address>
-            Rosebank, Johannesburg, South Africa
-        </address>
-    </footer>
-     <!-- Social media icons section -->
-     <div class="social-icons">
-                <a href="http://www.instagram.com/" class="instagram" data-platform="Instagram">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="http://www.facebook.com" class="facebook" data-platform="Facebook">
-                    <i class="fab fa-facebook"></i>
-                </a>
-                <a href="http://www.twitter.com/" class="twitter" data-platform="Twitter">
-                    <i class="fab fa-twitter"></i>
-                </a>
-                <a href="http://www.tiktok.com/" class="tiktok" data-platform="TikTok">
-                    <i class="fab fa-tiktok"></i>
-                </a>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Café Mocha</h4>
+                <p>Johannesburg's premier destination for gourmet coffee and handcrafted pastries.</p>
             </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact Info</h4>
+                <p><i class="fas fa-map-marker-alt"></i> Rosebank, Johannesburg</p>
+                <p><i class="fas fa-phone"></i> +27 68 318 9672</p>
+                <p><i class="fas fa-envelope"></i> info@cafemocha.co.za</p>
+            </div>
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <div class="social-icons">
+                    <a href="http://www.instagram.com/" class="instagram" data-platform="Instagram" title="Follow us on Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="http://www.facebook.com" class="facebook" data-platform="Facebook" title="Like us on Facebook">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="http://www.twitter.com/" class="twitter" data-platform="Twitter" title="Follow us on Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="http://www.tiktok.com/" class="tiktok" data-platform="TikTok" title="Follow us on TikTok">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Café Mocha. All rights reserved.</p>
+            <address>
+                Rosebank, Johannesburg, South Africa
+            </address>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- JavaScript Files -->
+    <script src="../javascript/main.js"></script>
+    <script src="../javascript/menu.js"></script>
+    <script src="../javascript/gallery.js"></script>
+    <script src="../javascript/video-player.js"></script>
 </body>
 </html>
