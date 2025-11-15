@@ -12,20 +12,7 @@
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
     
-    <!-- Emergency CSS Fix -->
-    <style>
-        body { 
-            background-color: #f5f5f5 !important; 
-            color: #333 !important;
-        }
-        main { background-color: #f5f5f5; }
-        section { 
-            background-color: white; 
-            margin: 20px 0; 
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
+   
     </style>
 </head>
 <body class="visibility-fix">
@@ -70,25 +57,28 @@
 
         <section class="contact-form-section">
             <h2>Send Us a Message</h2>
-            <form id="contactForm" class="contact-form">
+            <form id="contactForm" class="contact-form" novalidate>
                 <div class="form-group">
                     <label for="contact-name">Full Name: *</label>
-                    <input type="text" id="contact-name" name="name" required minlength="2" placeholder="Your full name">
+                    <input type="text" id="contact-name" name="name" placeholder="Your full name">
+                    <span class="error-message" id="name-error"></span>
                 </div>
                 
                 <div class="form-group">
                     <label for="contact-email">Email: *</label>
-                    <input type="email" id="contact-email" name="email" required placeholder="your.email@example.com">
+                    <input type="text" id="contact-email" name="email" placeholder="your.email@example.com">
+                    <span class="error-message" id="email-error"></span>
                 </div>
                 
                 <div class="form-group">
                     <label for="contact-phone">Phone:</label>
                     <input type="tel" id="contact-phone" name="phone" placeholder="+27 12 345 6789">
+                    <span class="error-message" id="phone-error"></span>
                 </div>
                 
                 <div class="form-group">
                     <label for="subject">Subject: *</label>
-                    <select id="subject" name="subject" required>
+                    <select id="subject" name="subject">
                         <option value="">Select a subject...</option>
                         <option value="general">General Inquiry</option>
                         <option value="feedback">Feedback</option>
@@ -96,12 +86,14 @@
                         <option value="partnership">Partnership Opportunity</option>
                         <option value="other">Other</option>
                     </select>
+                    <span class="error-message" id="subject-error"></span>
                 </div>
                 
                 <div class="form-group">
                     <label for="contact-message">Message: *</label>
-                    <textarea id="contact-message" name="message" rows="6" required minlength="10" placeholder="Your message..."></textarea>
+                    <textarea id="contact-message" name="message" rows="6" placeholder="Your message..."></textarea>
                     <small>Minimum 10 characters required</small>
+                    <span class="error-message" id="message-error"></span>
                 </div>
 
                 <button type="submit" class="btn">Send Message</button>
@@ -150,10 +142,218 @@
     </div>
 
     <!-- JavaScript Files -->
-    <script src="../js/main.js"></script>
-    <script src="../js/forms.js"></script>
-    <script src="../js/map.js"></script>
+    <script src="../javascript/main.js"></script>
+    <script src="../javascript/form.js"></script>
+    <script src="../javascript/map.js"></script>
     
+    <!-- Contact Form Validation JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactForm = document.getElementById('contactForm');
+            
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Reset previous errors
+                    clearErrors();
+                    
+                    // Validate all fields
+                    const isNameValid = validateName();
+                    const isEmailValid = validateEmail();
+                    const isPhoneValid = validatePhone();
+                    const isSubjectValid = validateSubject();
+                    const isMessageValid = validateMessage();
+                    
+                    // If all valid, submit form
+                    if (isNameValid && isEmailValid && isPhoneValid && isSubjectValid && isMessageValid) {
+                        // Here you would typically send the data to a server
+                        alert('Thank you! Your message has been sent successfully. We\'ll get back to you soon!');
+                        contactForm.reset();
+                        clearErrors();
+                    }
+                });
+                
+                // Real-time validation as user moves away from fields
+                setupRealTimeValidation();
+            }
+            
+            function validateName() {
+                const nameInput = document.getElementById('contact-name');
+                const nameError = document.getElementById('name-error');
+                const name = nameInput.value.trim();
+                
+                if (name === '') {
+                    showError(nameInput, nameError, 'Name is required');
+                    return false;
+                }
+                
+                if (name.length < 2) {
+                    showError(nameInput, nameError, 'Name must be at least 2 characters');
+                    return false;
+                }
+                
+                showSuccess(nameInput);
+                return true;
+            }
+            
+            function validateEmail() {
+                const emailInput = document.getElementById('contact-email');
+                const emailError = document.getElementById('email-error');
+                const email = emailInput.value.trim();
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                
+                if (email === '') {
+                    showError(emailInput, emailError, 'Email is required');
+                    return false;
+                }
+                
+                if (!emailRegex.test(email)) {
+                    showError(emailInput, emailError, 'Please enter a valid email address');
+                    return false;
+                }
+                
+                showSuccess(emailInput);
+                return true;
+            }
+     function validatePhone() {
+    const phoneInput = document.getElementById('contact-phone');
+    const phoneError = document.getElementById('phone-error');
+    const phone = phoneInput.value.trim();
+    
+    // Phone is optional, but if provided, do basic validation
+    if (phone !== '') {
+        // Remove all spaces, dashes, and parentheses for validation
+        const cleanedPhone = phone.replace(/[\s\-\(\)]/g, '');
+        
+        // Allow various formats:
+        // - International: +27XXXXXXXXX
+        // - Local: 0XXXXXXXXX
+        // - With spaces: +27 XX XXX XXXX or 0XX XXX XXXX
+        // - Basic digit check with minimum length
+        const phoneRegex = /^(\+?\d{1,4}[\s\-]?)?\(?\d{1,5}\)?[\s\-]?\d{1,5}[\s\-]?\d{1,5}[\s\-]?\d{1,5}$/;
+        
+        // Check if it's at least somewhat phone-like (minimum 8 digits)
+        const digitCount = cleanedPhone.replace(/\D/g, '').length;
+        
+        if (digitCount < 8) {
+            showError(phoneInput, phoneError, 'Please enter a valid phone number (at least 8 digits)');
+            return false;
+        }
+        
+        if (digitCount > 15) {
+            showError(phoneInput, phoneError, 'Phone number seems too long');
+            return false;
+        }
+        
+        // Basic format check
+        if (!phoneRegex.test(phone)) {
+            showError(phoneInput, phoneError, 'Please enter a valid phone number format');
+            return false;
+        }
+    }
+    
+    showSuccess(phoneInput);
+    return true;
+}
+            
+            function validateSubject() {
+                const subjectInput = document.getElementById('subject');
+                const subjectError = document.getElementById('subject-error');
+                const subject = subjectInput.value;
+                
+                if (subject === '') {
+                    showError(subjectInput, subjectError, 'Please select a subject');
+                    return false;
+                }
+                
+                showSuccess(subjectInput);
+                return true;
+            }
+            
+            function validateMessage() {
+                const messageInput = document.getElementById('contact-message');
+                const messageError = document.getElementById('message-error');
+                const message = messageInput.value.trim();
+                
+                if (message === '') {
+                    showError(messageInput, messageError, 'Message is required');
+                    return false;
+                }
+                
+                if (message.length < 10) {
+                    showError(messageInput, messageError, 'Message must be at least 10 characters');
+                    return false;
+                }
+                
+                showSuccess(messageInput);
+                return true;
+            }
+            
+            function showError(input, errorElement, message) {
+                errorElement.textContent = message;
+                errorElement.style.display = 'block';
+                input.parentElement.classList.add('error');
+                input.parentElement.classList.remove('success');
+            }
+            
+            function showSuccess(input) {
+                const errorElement = input.parentElement.querySelector('.error-message');
+                if (errorElement) {
+                    errorElement.style.display = 'none';
+                }
+                input.parentElement.classList.remove('error');
+                input.parentElement.classList.add('success');
+            }
+            
+            function clearErrors() {
+                const errorMessages = document.querySelectorAll('.error-message');
+                errorMessages.forEach(error => {
+                    error.style.display = 'none';
+                });
+                
+                const formGroups = document.querySelectorAll('.form-group');
+                formGroups.forEach(group => {
+                    group.classList.remove('error', 'success');
+                });
+            }
+            
+            function setupRealTimeValidation() {
+                const inputs = contactForm.querySelectorAll('input, textarea, select');
+                
+                inputs.forEach(input => {
+                    input.addEventListener('blur', function() {
+                        switch(this.id) {
+                            case 'contact-name':
+                                validateName();
+                                break;
+                            case 'contact-email':
+                                validateEmail();
+                                break;
+                            case 'contact-phone':
+                                validatePhone();
+                                break;
+                            case 'subject':
+                                validateSubject();
+                                break;
+                            case 'contact-message':
+                                validateMessage();
+                                break;
+                        }
+                    });
+                    
+                    input.addEventListener('input', function() {
+                        const errorElement = this.parentElement.querySelector('.error-message');
+                        if (errorElement && errorElement.style.display === 'block') {
+                            this.parentElement.classList.remove('error');
+                            errorElement.style.display = 'none';
+                        }
+                    });
+                });
+            }
+        });
+    </script>
+
     <!-- Emergency JavaScript Fix -->
     <script>
         // Force visibility on load

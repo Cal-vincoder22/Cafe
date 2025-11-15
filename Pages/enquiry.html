@@ -13,27 +13,7 @@
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
     
-    <!-- Emergency CSS Fix -->
-    <style>
-        body { 
-            background-color: #f5f5f5 !important; 
-            color: #333 !important;
-        }
-        main { background-color: #f5f5f5; }
-        section { 
-            background-color: white; 
-            margin: 20px 0; 
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        form {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
-        }
-    </style>
+
 </head>
 <body class="visibility-fix">
     <header>
@@ -55,22 +35,25 @@
         <section>
             <h2>Make an Enquiry</h2>
             
-            <form id="enquiryForm" class="enquiry-form">
+            <form id="enquiryForm" class="enquiry-form" novalidate>
                 <fieldset>
                     <legend>Your Information</legend>
                     <div class="form-group">
                         <label for="name">Full Name: *</label>
-                        <input type="text" id="name" name="name" required minlength="2" placeholder="Enter your full name">
+                        <input type="text" id="name" name="name" placeholder="Enter your full name">
+                        <span class="error-message" id="name-error"></span>
                     </div>
                     
                     <div class="form-group">
                         <label for="email">Email: *</label>
-                        <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+                        <input type="text" id="email" name="email" placeholder="your.email@example.com">
+                        <span class="error-message" id="email-error"></span>
                     </div>
                     
                     <div class="form-group">
                         <label for="phone">Phone: *</label>
-                        <input type="tel" id="phone" name="phone" required placeholder="+27 12 345 6789" pattern="^[\+]?[0-9\s\-\(\)]{10,}$">
+                        <input type="tel" id="phone" name="phone" placeholder="+27 12 345 6789">
+                        <span class="error-message" id="phone-error"></span>
                     </div>
                 </fieldset>
 
@@ -78,7 +61,7 @@
                     <legend>Enquiry Details</legend>
                     <div class="form-group">
                         <label for="enquiry-type">Enquiry Type: *</label>
-                        <select id="enquiry-type" name="enquiry-type" required>
+                        <select id="enquiry-type" name="enquiry-type">
                             <option value="">Please select...</option>
                             <option value="general">General Question</option>
                             <option value="catering">Catering Request</option>
@@ -86,22 +69,26 @@
                             <option value="wholesale">Wholesale Coffee</option>
                             <option value="feedback">Feedback</option>
                         </select>
+                        <span class="error-message" id="enquiry-type-error"></span>
                     </div>
                     
                     <div class="form-group">
                         <label for="event-date">Event Date (if applicable):</label>
-                        <input type="date" id="event-date" name="event-date" min="<?php echo date('Y-m-d'); ?>">
+                        <input type="date" id="event-date" name="event-date">
+                        <span class="error-message" id="event-date-error"></span>
                     </div>
                     
                     <div class="form-group">
                         <label for="guests">Number of Guests (if applicable):</label>
-                        <input type="number" id="guests" name="guests" min="1" max="100" placeholder="e.g., 25">
+                        <input type="number" id="guests" name="guests" min="1" max="1000" placeholder="e.g., 25">
+                        <span class="error-message" id="guests-error"></span>
                     </div>
                     
                     <div class="form-group">
                         <label for="message">Message: *</label>
-                        <textarea id="message" name="message" rows="5" required minlength="10" placeholder="Please provide details about your enquiry..."></textarea>
+                        <textarea id="message" name="message" rows="5" placeholder="Please provide details about your enquiry..."></textarea>
                         <small>Minimum 10 characters required</small>
+                        <span class="error-message" id="message-error"></span>
                     </div>
                 </fieldset>
 
@@ -149,9 +136,288 @@
     </div>
 
     <!-- JavaScript Files -->
-    <script src="../js/main.js"></script>
-    <script src="../js/forms.js"></script>
+    <script src="../javascript/main.js"></script>
+    <script src="../javascript/form.js"></script>
     
+    <!-- Enquiry Form Validation JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const enquiryForm = document.getElementById('enquiryForm');
+            
+            if (enquiryForm) {
+                enquiryForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Reset previous errors
+                    clearErrors();
+                    
+                    // Validate all fields
+                    const isNameValid = validateName();
+                    const isEmailValid = validateEmail();
+                    const isPhoneValid = validatePhone();
+                    const isEnquiryTypeValid = validateEnquiryType();
+                    const isEventDateValid = validateEventDate();
+                    const isGuestsValid = validateGuests();
+                    const isMessageValid = validateMessage();
+                    
+                    // If all valid, submit form
+                    if (isNameValid && isEmailValid && isPhoneValid && isEnquiryTypeValid && isEventDateValid && isGuestsValid && isMessageValid) {
+                        // Here you would typically send the data to a server
+                        alert('Thank you! Your enquiry has been submitted successfully. We\'ll get back to you soon!');
+                        enquiryForm.reset();
+                        clearErrors();
+                    }
+                });
+                
+                // Real-time validation as user moves away from fields
+                setupRealTimeValidation();
+            }
+            
+            function validateName() {
+                const nameInput = document.getElementById('name');
+                const nameError = document.getElementById('name-error');
+                const name = nameInput.value.trim();
+                
+                if (name === '') {
+                    showError(nameInput, nameError, 'Full name is required');
+                    return false;
+                }
+                
+                if (name.length < 2) {
+                    showError(nameInput, nameError, 'Name must be at least 2 characters');
+                    return false;
+                }
+                
+                showSuccess(nameInput);
+                return true;
+            }
+            
+            function validateEmail() {
+                const emailInput = document.getElementById('email');
+                const emailError = document.getElementById('email-error');
+                const email = emailInput.value.trim();
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                
+                if (email === '') {
+                    showError(emailInput, emailError, 'Email is required');
+                    return false;
+                }
+                
+                if (!emailRegex.test(email)) {
+                    showError(emailInput, emailError, 'Please enter a valid email address');
+                    return false;
+                }
+                
+                showSuccess(emailInput);
+                return true;
+            }
+            
+            function validatePhone() {
+                const phoneInput = document.getElementById('phone');
+                const phoneError = document.getElementById('phone-error');
+                const phone = phoneInput.value.trim();
+                
+                if (phone === '') {
+                    showError(phoneInput, phoneError, 'Phone number is required');
+                    return false;
+                }
+                
+                // Count digits to ensure it's a reasonable phone number
+                const digitCount = phone.replace(/\D/g, '').length;
+                
+                if (digitCount < 8) {
+                    showError(phoneInput, phoneError, 'Please enter at least 8 digits for a valid phone number');
+                    return false;
+                }
+                
+                if (digitCount > 15) {
+                    showError(phoneInput, phoneError, 'Phone number is too long');
+                    return false;
+                }
+                
+                // Very basic check - just ensure it contains mostly numbers and common phone characters
+                const invalidChars = phone.match(/[^\d\s\-\+\(\)\.]/g);
+                if (invalidChars) {
+                    showError(phoneInput, phoneError, 'Please use only numbers, spaces, hyphens, parentheses, and + sign');
+                    return false;
+                }
+                
+                showSuccess(phoneInput);
+                return true;
+            }
+            
+            function validateEnquiryType() {
+                const enquiryTypeInput = document.getElementById('enquiry-type');
+                const enquiryTypeError = document.getElementById('enquiry-type-error');
+                const enquiryType = enquiryTypeInput.value;
+                
+                if (enquiryType === '') {
+                    showError(enquiryTypeInput, enquiryTypeError, 'Please select an enquiry type');
+                    return false;
+                }
+                
+                showSuccess(enquiryTypeInput);
+                return true;
+            }
+            
+            function validateEventDate() {
+                const eventDateInput = document.getElementById('event-date');
+                const eventDateError = document.getElementById('event-date-error');
+                const eventDate = eventDateInput.value;
+                const enquiryType = document.getElementById('enquiry-type').value;
+                
+                // Event date is only required for catering and events
+                if ((enquiryType === 'catering' || enquiryType === 'events') && eventDate === '') {
+                    showError(eventDateInput, eventDateError, 'Event date is required for catering and event bookings');
+                    return false;
+                }
+                
+                // If date is provided, check if it's not in the past
+                if (eventDate !== '') {
+                    const selectedDate = new Date(eventDate);
+                    const today = new Date();
+                    today.setHours(0, 0, 0, 0); // Reset time part for accurate comparison
+                    
+                    if (selectedDate < today) {
+                        showError(eventDateInput, eventDateError, 'Event date cannot be in the past');
+                        return false;
+                    }
+                }
+                
+                showSuccess(eventDateInput);
+                return true;
+            }
+            
+            function validateGuests() {
+                const guestsInput = document.getElementById('guests');
+                const guestsError = document.getElementById('guests-error');
+                const guests = guestsInput.value;
+                const enquiryType = document.getElementById('enquiry-type').value;
+                
+                // Guests is only required for catering and events
+                if ((enquiryType === 'catering' || enquiryType === 'events') && guests === '') {
+                    showError(guestsInput, guestsError, 'Number of guests is required for catering and event bookings');
+                    return false;
+                }
+                
+                // If guests is provided, validate the number
+                if (guests !== '') {
+                    const guestsNum = parseInt(guests);
+                    if (isNaN(guestsNum) || guestsNum < 1) {
+                        showError(guestsInput, guestsError, 'Please enter a valid number of guests (minimum 1)');
+                        return false;
+                    }
+                    
+                    if (guestsNum > 1000) {
+                        showError(guestsInput, guestsError, 'For events larger than 1000 guests, please call us directly');
+                        return false;
+                    }
+                }
+                
+                showSuccess(guestsInput);
+                return true;
+            }
+            
+            function validateMessage() {
+                const messageInput = document.getElementById('message');
+                const messageError = document.getElementById('message-error');
+                const message = messageInput.value.trim();
+                
+                if (message === '') {
+                    showError(messageInput, messageError, 'Message is required');
+                    return false;
+                }
+                
+                if (message.length < 10) {
+                    showError(messageInput, messageError, 'Message must be at least 10 characters');
+                    return false;
+                }
+                
+                showSuccess(messageInput);
+                return true;
+            }
+            
+            function showError(input, errorElement, message) {
+                errorElement.textContent = message;
+                errorElement.style.display = 'block';
+                input.parentElement.classList.add('error');
+                input.parentElement.classList.remove('success');
+            }
+            
+            function showSuccess(input) {
+                const errorElement = input.parentElement.querySelector('.error-message');
+                if (errorElement) {
+                    errorElement.style.display = 'none';
+                }
+                input.parentElement.classList.remove('error');
+                input.parentElement.classList.add('success');
+            }
+            
+            function clearErrors() {
+                const errorMessages = document.querySelectorAll('.error-message');
+                errorMessages.forEach(error => {
+                    error.style.display = 'none';
+                });
+                
+                const formGroups = document.querySelectorAll('.form-group');
+                formGroups.forEach(group => {
+                    group.classList.remove('error', 'success');
+                });
+            }
+            
+            function setupRealTimeValidation() {
+                const inputs = enquiryForm.querySelectorAll('input, textarea, select');
+                
+                inputs.forEach(input => {
+                    input.addEventListener('blur', function() {
+                        validateField(this.id);
+                    });
+                    
+                    input.addEventListener('input', function() {
+                        const errorElement = this.parentElement.querySelector('.error-message');
+                        if (errorElement && errorElement.style.display === 'block') {
+                            this.parentElement.classList.remove('error');
+                            errorElement.style.display = 'none';
+                        }
+                    });
+                });
+                
+                // Special handling for enquiry type changes (affects event date and guests)
+                const enquiryTypeInput = document.getElementById('enquiry-type');
+                enquiryTypeInput.addEventListener('change', function() {
+                    validateEventDate();
+                    validateGuests();
+                });
+            }
+            
+            function validateField(fieldId) {
+                switch(fieldId) {
+                    case 'name':
+                        validateName();
+                        break;
+                    case 'email':
+                        validateEmail();
+                        break;
+                    case 'phone':
+                        validatePhone();
+                        break;
+                    case 'enquiry-type':
+                        validateEnquiryType();
+                        break;
+                    case 'event-date':
+                        validateEventDate();
+                        break;
+                    case 'guests':
+                        validateGuests();
+                        break;
+                    case 'message':
+                        validateMessage();
+                        break;
+                }
+            }
+        });
+    </script>
+
     <!-- Emergency JavaScript Fix -->
     <script>
         // Force visibility on load
@@ -182,6 +448,13 @@
             fieldsets.forEach(fieldset => {
                 fieldset.style.backgroundColor = '#f9f9f9';
             });
+            
+            // Set minimum date for event date to today
+            const eventDateInput = document.getElementById('event-date');
+            if (eventDateInput) {
+                const today = new Date().toISOString().split('T')[0];
+                eventDateInput.min = today;
+            }
         });
     </script>
 </body>

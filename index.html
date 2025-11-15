@@ -44,10 +44,11 @@
         </div>
     </header>
 
-    <!-- Hero section -->
+    <!-- Hero section with Slideshow -->
     <main>
         <section class="hero-section">
             <div class="hero-slider">
+                <!-- Slide 1: Interior -->
                 <div class="slide active">
                     <img src="./Assets/interior.jpg" alt="Café Mocha interior with cozy seating and coffee bar" loading="eager">
                     <div class="hero-content">
@@ -59,32 +60,98 @@
                         </div>
                     </div>
                 </div>
-                <!-- Additional slides can be added here -->
+                
+                <!-- Slide 2: Coffee Art -->
+                <div class="slide">
+                    <img src="./Assets/drew-coffman-tZKwLRO904E-unsplash.jpg" alt="Beautiful latte art and coffee presentation" loading="lazy">
+                    <div class="hero-content">
+                        <h2 class="hero-title fade-in">Artisan Coffee Crafting</h2>
+                        <p class="hero-subtitle fade-in">Expert baristas creating perfect coffee experiences</p>
+                        <div class="hero-buttons">
+                            <a href="./Pages/menu.html" class="btn btn-primary">Explore Drinks</a>
+                            <a href="./Pages/about.html" class="btn btn-secondary">Our Story</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 3: Pastries -->
+                <div class="slide">
+                    <img src="./Assets/download.jpeg" alt="Fresh pastries and baked goods display" loading="lazy">
+                    <div class="hero-content">
+                        <h2 class="hero-title fade-in">Fresh Daily Pastries</h2>
+                        <p class="hero-subtitle fade-in">Baked fresh every morning with love and tradition</p>
+                        <div class="hero-buttons">
+                            <a href="./Pages/menu.html" class="btn btn-primary">See Food Menu</a>
+                            <a href="./Pages/contact.html" class="btn btn-secondary">Visit Us</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 4: Coffee Beans -->
+                <div class="slide">
+                    <img src="./Assets/Southern-Estate-Medium-Roast-02-scaled-1.webp" alt="Premium coffee beans and roasting" loading="lazy">
+                    <div class="hero-content">
+                        <h2 class="hero-title fade-in">Premium Coffee Beans</h2>
+                        <p class="hero-subtitle fade-in">Ethically sourced from the world's finest coffee regions</p>
+                        <div class="hero-buttons">
+                            <a href="./Pages/menu.html" class="btn btn-primary">Buy Coffee Beans</a>
+                            <a href="./Pages/enquiry.html" class="btn btn-secondary">Wholesale Enquiry</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="hero-stats">
-                <div class="stat-item">
-                    <i class="fas fa-coffee"></i>
-                    <span class="stat-number" data-count="15">0</span>
-                    <span class="stat-label">Coffee Varieties</span>
-                </div>
-                <div class="stat-item">
-                    <i class="fas fa-bread-slice"></i>
-                    <span class="stat-number" data-count="12">0</span>
-                    <span class="stat-label">Fresh Pastries</span>
-                </div>
-                <div class="stat-item">
-                    <i class="fas fa-users"></i>
-                    <span class="stat-number" data-count="500">0</span>
-                    <span class="stat-label">Happy Customers</span>
-                </div>
-                <div class="stat-item">
-                    <i class="fas fa-award"></i>
-                    <span class="stat-number" data-count="3">0</span>
-                    <span class="stat-label">Years Serving</span>
-                </div>
+            
+            <!-- Slideshow Controls -->
+            <div class="slider-controls">
+                <button class="slider-prev" aria-label="Previous slide">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="slider-next" aria-label="Next slide">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            
+            <!-- Slide Indicators -->
+            <div class="slide-indicators">
+                <span class="indicator active" data-slide="0"></span>
+                <span class="indicator" data-slide="1"></span>
+                <span class="indicator" data-slide="2"></span>
+                <span class="indicator" data-slide="3"></span>
+            </div>
+            
+            <!-- Auto-play Toggle -->
+            <div class="autoplay-control">
+                <button class="autoplay-toggle active" aria-label="Pause slideshow">
+                    <i class="fas fa-pause"></i>
+                </button>
             </div>
         </section>
 
+        <!-- Stats Section -->
+        <div class="hero-stats">
+            <div class="stat-item">
+                <i class="fas fa-coffee"></i>
+                <span class="stat-number" data-count="15">0</span>
+                <span class="stat-label">Coffee Varieties</span>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-bread-slice"></i>
+                <span class="stat-number" data-count="12">0</span>
+                <span class="stat-label">Fresh Pastries</span>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-users"></i>
+                <span class="stat-number" data-count="500">0</span>
+                <span class="stat-label">Happy Customers</span>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-award"></i>
+                <span class="stat-number" data-count="3">0</span>
+                <span class="stat-label">Years Serving</span>
+            </div>
+        </div>
+
+        <!-- Rest of your existing sections remain exactly the same -->
         <!-- Featured sections -->
         <section class="features-section">
             <div class="container">
@@ -306,7 +373,8 @@
     </button>
 
     <!-- JavaScript Files -->
-    <script src="./javascript/main.js"></script>
-    <script src="./javascript/home-animations.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="./js/home-slideshow.js"></script>
+    <script src="./js/home-animations.js"></script>
 </body>
-</html> 
+</html>
