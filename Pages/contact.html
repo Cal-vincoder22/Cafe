@@ -71,7 +71,7 @@
                 </div>
                 
                 <div class="form-group">
-                    <label for="contact-phone">Phone:</label>
+                    <label for="contact-phone">Phone: *</label>
                     <input type="tel" id="contact-phone" name="phone" placeholder="+27 12 345 6789">
                     <span class="error-message" id="phone-error"></span>
                 </div>
@@ -216,41 +216,38 @@
                 showSuccess(emailInput);
                 return true;
             }
-     function validatePhone() {
+   function validatePhone() {
     const phoneInput = document.getElementById('contact-phone');
     const phoneError = document.getElementById('phone-error');
     const phone = phoneInput.value.trim();
     
-    // Phone is optional, but if provided, do basic validation
-    if (phone !== '') {
-        // Remove all spaces, dashes, and parentheses for validation
-        const cleanedPhone = phone.replace(/[\s\-\(\)]/g, '');
-        
-        // Allow various formats:
-        // - International: +27XXXXXXXXX
-        // - Local: 0XXXXXXXXX
-        // - With spaces: +27 XX XXX XXXX or 0XX XXX XXXX
-        // - Basic digit check with minimum length
-        const phoneRegex = /^(\+?\d{1,4}[\s\-]?)?\(?\d{1,5}\)?[\s\-]?\d{1,5}[\s\-]?\d{1,5}[\s\-]?\d{1,5}$/;
-        
-        // Check if it's at least somewhat phone-like (minimum 8 digits)
-        const digitCount = cleanedPhone.replace(/\D/g, '').length;
-        
-        if (digitCount < 8) {
-            showError(phoneInput, phoneError, 'Please enter a valid phone number (at least 8 digits)');
-            return false;
-        }
-        
-        if (digitCount > 15) {
-            showError(phoneInput, phoneError, 'Phone number seems too long');
-            return false;
-        }
-        
-        // Basic format check
-        if (!phoneRegex.test(phone)) {
-            showError(phoneInput, phoneError, 'Please enter a valid phone number format');
-            return false;
-        }
+    // Phone is now REQUIRED
+    if (phone === '') {
+        showError(phoneInput, phoneError, 'Phone number is required');
+        return false;
+    }
+    
+    // Remove all spaces, dashes, and parentheses for validation
+    const cleanedPhone = phone.replace(/[\s\-\(\)]/g, '');
+    
+    // Check if it's at least somewhat phone-like (minimum 8 digits)
+    const digitCount = cleanedPhone.replace(/\D/g, '').length;
+    
+    if (digitCount < 8) {
+        showError(phoneInput, phoneError, 'Please enter a valid phone number (at least 8 digits)');
+        return false;
+    }
+    
+    if (digitCount > 15) {
+        showError(phoneInput, phoneError, 'Phone number seems too long');
+        return false;
+    }
+    
+    // Basic format check
+    const phoneRegex = /^(\+?\d{1,4}[\s\-]?)?\(?\d{1,5}\)?[\s\-]?\d{1,5}[\s\-]?\d{1,5}[\s\-]?\d{1,5}$/;
+    if (!phoneRegex.test(phone)) {
+        showError(phoneInput, phoneError, 'Please enter a valid phone number format');
+        return false;
     }
     
     showSuccess(phoneInput);
