@@ -15,60 +15,109 @@
 /* SEARCH BAR VISIBILITY FIX */
 /* ============================================= */
 
-.search-container {
+.menu-header .search-container {
     visibility: visible !important;
     opacity: 1 !important;
     display: block !important;
+    position: relative !important;
+    z-index: 100 !important;
+    margin: 20px 0 !important;
+    text-align: center !important;
 }
 
-.search-input {
+#search-input.search-input {
     visibility: visible !important;
     opacity: 1 !important;
     display: block !important;
     background: white !important;
     color: #333 !important;
     border: 2px solid #D7CCC8 !important;
+    width: 100% !important;
+    max-width: 400px !important;
+    padding: 12px 20px !important;
+    border-radius: 25px !important;
+    font-size: 16px !important;
+    margin: 0 auto !important;
 }
 
-.search-input::placeholder {
+#search-input.search-input::placeholder {
     color: #666 !important;
     opacity: 1 !important;
 }
 
-/* Ensure proper text contrast for search input */
-.search-input:focus {
+/* Force the search input to be visible in all states */
+#search-input.search-input:focus,
+#search-input.search-input:hover,
+#search-input.search-input:active {
     color: #333 !important;
     background: white !important;
+    border-color: #8D6E63 !important;
+    outline: none !important;
+    box-shadow: 0 0 0 3px rgba(141, 110, 99, 0.1) !important;
 }
 
-/* Ensure the menu page content is visible */
-.menu-page .search-container,
-.menu-page .search-input,
-.menu-page .menu-categories,
-.menu-page .menu-section {
+/* Override any potential hiding */
+.menu-header .search-container,
+#search-input.search-input {
+    display: block !important;
     visibility: visible !important;
     opacity: 1 !important;
+    clip: auto !important;
+    clip-path: none !important;
+    transform: none !important;
+    filter: none !important;
 }
 
-/* Remove any conflicting background colors but maintain text contrast */
-.menu-section {
-    background: white;
-    color: #333;
+/* Search results styling */
+.search-results {
+    position: absolute !important;
+    top: 100% !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 100% !important;
+    max-width: 400px !important;
+    background: white !important;
+    border: 1px solid #D7CCC8 !important;
+    border-radius: 10px !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
+    z-index: 1000 !important;
+    display: none !important;
 }
 
-.menu-section * {
-    color: #333 !important;
+.search-results:not(:empty) {
+    display: block !important;
+}
+
+/* Menu categories visibility */
+.menu-categories {
     visibility: visible !important;
     opacity: 1 !important;
+    display: flex !important;
+    justify-content: center !important;
+    gap: 1rem !important;
+    flex-wrap: wrap !important;
+    margin-top: 2rem !important;
 }
 
-/* Specific fix for search text visibility */
-.search-input,
-.search-input::placeholder,
-.search-input:focus,
-.search-input:focus::placeholder {
-    color: #333 !important;
-    background-color: white !important;
+.category-btn {
+    visibility: visible !important;
+    opacity: 1 !important;
+    display: inline-block !important;
+    padding: 0.8rem 1.5rem !important;
+    border: 2px solid rgba(255, 255, 255, 0.3) !important;
+    background: transparent !important;
+    color: white !important;
+    border-radius: 25px !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    font-weight: 500 !important;
+}
+
+.category-btn:hover,
+.category-btn.active {
+    background: white !important;
+    color: #8B4513 !important;
+    border-color: white !important;
 }
 
 
