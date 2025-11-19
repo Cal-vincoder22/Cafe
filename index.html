@@ -3,37 +3,184 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Café Mocha | Premium Coffee & Artisan Pastries in Rosebank</title>
+    <title>Café Mocha | Our Menu - Coffee, Drinks & Food</title>
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Café Mocha - Johannesburg's premier destination for gourmet coffee, handcrafted pastries, and cozy atmosphere in Rosebank. Ethically sourced beans, fresh baked goods daily.">
-    <meta name="keywords" content="coffee shop Johannesburg, artisan coffee Rosebank, fresh pastries, café Rosebank, gourmet coffee, breakfast café, South Africa coffee, coffee near me">
-    <meta name="author" content="Café Mocha">
+    <meta name="description" content="Explore Café Mocha's full menu featuring artisan coffee, specialty drinks, fresh pastries, sandwiches, and delicious food. Gluten-free and vegan options available.">
+    <meta name="keywords" content="coffee menu Johannesburg, café food Rosebank, artisan coffee, pastries, sandwiches, breakfast menu, gluten-free options">
     
-    <!-- Open Graph Tags -->
-    <meta property="og:title" content="Café Mocha | Premium Coffee & Artisan Pastries">
-    <meta property="og:description" content="Experience Johannesburg's finest artisan coffee and handcrafted pastries at Café Mocha in Rosebank.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://cafemocha.co.za">
-    
-    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="../Cafe-Mocha/css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+<style>
+    /* Additional styles for search and modal */
+    .search-results {
+        margin-top: 10px;
+        font-size: 14px;
+        color: #666;
+    }
+    .menu-card.hidden {
+        display: none;
+    }
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        justify-content: center;
+        align-items: center;
+    }
+    .modal-content {
+        max-width: 80%;
+        max-height: 80%;
+        width: 500px; /* Fixed size for consistency */
+        height: 500px; /* Fixed size for consistency */
+        object-fit: cover; /* Ensures image fits without distortion */
+    }
+    .close {
+        position: absolute;
+        top: 10px;
+        right: 25px;
+        color: #fff;
+        font-size: 35px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+    .menu-card img {
+        cursor: pointer;
+        transition: transform 0.2s;
+    }
+    .menu-card img:hover {
+        transform: scale(1.05);
+    }
+    /* ============================================= */
+/* SEARCH BAR VISIBILITY FIX */
+/* ============================================= */
+
+.search-container {
+    visibility: visible !important;
+    opacity: 1 !important;
+    display: block !important;
+    position: relative !important;
+    z-index: 100 !important;
+    margin: 20px 0 !important;
+    text-align: center !important;
+}
+
+#search-input.search-input {
+    visibility: visible !important;
+    opacity: 1 !important;
+    display: block !important;
+    background: white !important;
+    color: #333 !important;
+    border: 2px solid #D7CCC8 !important;
+    width: 100% !important;
+    max-width: 400px !important;
+    padding: 12px 20px !important;
+    border-radius: 25px !important;
+    font-size: 16px !important;
+    margin: 0 auto !important;
+}
+
+#search-input.search-input::placeholder {
+    color: #666 !important;
+    opacity: 1 !important;
+}
+
+/* Force the search input to be visible in all states */
+#search-input.search-input:focus,
+#search-input.search-input:hover,
+#search-input.search-input:active {
+    color: #333 !important;
+    background: white !important;
+    border-color: #8D6E63 !important;
+    outline: none !important;
+    box-shadow: 0 0 0 3px rgba(141, 110, 99, 0.1) !important;
+}
+
+/* Override any potential hiding */
+.menu-header .search-container,
+#search-input.search-input {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    clip: auto !important;
+    clip-path: none !important;
+    transform: none !important;
+    filter: none !important;
+}
+
+/* Search results styling */
+.search-results {
+    position: absolute !important;
+    top: 100% !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 100% !important;
+    max-width: 400px !important;
+    background: white !important;
+    border: 1px solid #D7CCC8 !important;
+    border-radius: 10px !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
+    z-index: 1000 !important;
+    display: none !important;
+}
+
+.search-results:not(:empty) {
+    display: block !important;
+}
+
+/* Menu categories visibility */
+.menu-categories {
+    visibility: visible !important;
+    opacity: 1 !important;
+    display: flex !important;
+    justify-content: center !important;
+    gap: 1rem !important;
+    flex-wrap: wrap !important;
+    margin-top: 2rem !important;
+}
+
+.category-btn {
+    visibility: visible !important;
+    opacity: 1 !important;
+    display: inline-block !important;
+    padding: 0.8rem 1.5rem !important;
+    border: 2px solid rgba(255, 255, 255, 0.3) !important;
+    background: transparent !important;
+    color: white !important;
+    border-radius: 25px !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    font-weight: 500 !important;
+}
+
+.category-btn:hover,
+.category-btn.active {
+    background: white !important;
+    color: #8B4513 !important;
+    border-color: white !important;
+}
+    </style>
 </head>
 <body>
-    <!-- Header with navigation -->
+    <!-- Enhanced Header matching homepage -->
     <header class="sticky-header">
         <div class="header-container">
             <div class="logo-section">
-                <img src="./Assets/Cafe Mocha Logo.jpg" width="80" height="60" alt="Café Mocha Logo - Artisan Coffee Experience" class="logo">
+                <img src="../Assets/Cafe Mocha Logo.jpg" width="80" height="60" alt="Café Mocha Logo - Artisan Coffee & Food" class="logo">
                 <h1>Café Mocha</h1>
             </div>
             <nav>
                 <ul class="nav-menu">
-                    <li><a href="index.html" class="nav-link active">Home</a></li>
-                    <li><a href="./Pages/about.html" class="nav-link">About Us</a></li>
-                    <li><a href="./Pages/menu.html" class="nav-link">Menu</a></li>
-                    <li><a href="./Pages/contact.html" class="nav-link">Contact</a></li>
-                    <li><a href="./Pages/enquiry.html" class="nav-link">Enquiries</a></li>
+                    <li><a href="../index.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About Us</a></li>
+                    <li><a href="menu.html" class="nav-link active">Menu</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                    <li><a href="enquiry.html" class="nav-link">Enquiries</a></li>
                 </ul>
                 <div class="hamburger">
                     <span></span>
@@ -44,337 +191,527 @@
         </div>
     </header>
 
-    <!-- Hero section with Slideshow -->
     <main>
-        <section class="hero-section">
-            <div class="hero-slider">
-                <!-- Slide 1: Interior -->
-                <div class="slide active">
-                    <img src="./Assets/interior.jpg" alt="Café Mocha interior with cozy seating and coffee bar" loading="eager">
-                    <div class="hero-content">
-                        <h2 class="hero-title fade-in">Welcome to Café Mocha</h2>
-                        <p class="hero-subtitle fade-in">Johannesburg's premier destination for gourmet coffee and handcrafted pastries</p>
-                        <div class="hero-buttons">
-                            <a href="./Pages/menu.html" class="btn btn-primary">View Our Menu</a>
-                            <a href="./Pages/contact.html" class="btn btn-secondary">Find Us</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Slide 2: Coffee Art -->
-                <div class="slide">
-                    <img src="./Assets/Coffee art.webp" alt="Beautiful latte art and coffee presentation" loading="lazy">
-                    <div class="hero-content">
-                        <h2 class="hero-title fade-in">Artisan Coffee Crafting</h2>
-                        <p class="hero-subtitle fade-in">Expert baristas creating perfect coffee experiences</p>
-                        <div class="hero-buttons">
-                            <a href="./Pages/menu.html" class="btn btn-primary">Explore Drinks</a>
-                            <a href="./Pages/about.html" class="btn btn-secondary">Our Story</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Slide 3: Pastries -->
-                <div class="slide">
-                    <img src="./Assets/pastries.avif" alt="Fresh pastries and baked goods display" loading="lazy">
-                    <div class="hero-content">
-                        <h2 class="hero-title fade-in">Fresh Daily Pastries</h2>
-                        <p class="hero-subtitle fade-in">Baked fresh every morning with love and tradition</p>
-                        <div class="hero-buttons">
-                            <a href="./Pages/menu.html" class="btn btn-primary">See Food Menu</a>
-                            <a href="./Pages/contact.html" class="btn btn-secondary">Visit Us</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Slide 4: Coffee Beans -->
-                <div class="slide">
-                    <img src="./Assets/Coffee Beans.webp" alt="Premium coffee beans and roasting" loading="lazy">
-                    <div class="hero-content">
-                        <h2 class="hero-title fade-in">Premium Coffee Beans</h2>
-                        <p class="hero-subtitle fade-in">Ethically sourced from the world's finest coffee regions</p>
-                        <div class="hero-buttons">
-                            <a href="./Pages/menu.html" class="btn btn-primary">Buy Coffee Beans</a>
-                            <a href="./Pages/enquiry.html" class="btn btn-secondary">Wholesale Enquiry</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <!-- Menu Header with Search -->
+        <section class="menu-header fade-in">
+            <h2>Our Menu</h2>
+            <p class="menu-description">Discover our carefully crafted selection of artisan coffee, specialty drinks, and freshly prepared food</p>
             
-            <!-- Slideshow Controls -->
-            <div class="slider-controls">
-                <button class="slider-prev" aria-label="Previous slide">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                <button class="slider-next" aria-label="Next slide">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
+            <!-- Search Functionality -->
+            <div class="search-container">
+                <input type="text" id="search-input" class="search-input" placeholder="Search menu items... (e.g., 'cappuccino', 'croissant', 'gluten-free')">
+                <div class="search-results" id="search-results"></div>
             </div>
-            
-            <!-- Slide Indicators -->
-            <div class="slide-indicators">
-                <span class="indicator active" data-slide="0"></span>
-                <span class="indicator" data-slide="1"></span>
-                <span class="indicator" data-slide="2"></span>
-                <span class="indicator" data-slide="3"></span>
-            </div>
-            
-            <!-- Auto-play Toggle -->
-            <div class="autoplay-control">
-                <button class="autoplay-toggle active" aria-label="Pause slideshow">
-                    <i class="fas fa-pause"></i>
-                </button>
+
+            <!-- Quick Navigation -->
+            <div class="menu-categories">
+                <button class="category-btn active" data-category="all">All Items</button>
+                <button class="category-btn" data-category="drinks">Drinks</button>
+                <button class="category-btn" data-category="food">Food</button>
+                <button class="category-btn" data-category="coffee-beans">Coffee Beans</button>
             </div>
         </section>
 
-        <!-- Stats Section -->
-        <div class="hero-stats">
-            <div class="stat-item">
-                <i class="fas fa-coffee"></i>
-                <span class="stat-number" data-count="15">0</span>
-                <span class="stat-label">Coffee Varieties</span>
-            </div>
-            <div class="stat-item">
-                <i class="fas fa-bread-slice"></i>
-                <span class="stat-number" data-count="12">0</span>
-                <span class="stat-label">Fresh Pastries</span>
-            </div>
-            <div class="stat-item">
-                <i class="fas fa-users"></i>
-                <span class="stat-number" data-count="500">0</span>
-                <span class="stat-label">Happy Customers</span>
-            </div>
-            <div class="stat-item">
-                <i class="fas fa-award"></i>
-                <span class="stat-number" data-count="3">0</span>
-                <span class="stat-label">Years Serving</span>
-            </div>
-        </div>
-
-        <!-- Rest of your existing sections remain exactly the same -->
-        <!-- Featured sections -->
-        <section class="features-section">
-            <div class="container">
-                <h2 class="section-title">Our Specialties</h2>
-                <div class="features-grid">
-                    <article class="feature-card slide-in">
-                        <div class="feature-icon">
-                            <i class="fas fa-mug-hot"></i>
+        <!-- Video Section -->
+        <section class="video-section fade-in">
+            <div class="video-container">
+                <h3>Experience Café Mocha</h3>
+                <p class="video-description">Watch how we craft your favorite drinks and prepare our delicious food</p>
+                
+                <div class="video-grid">
+                    <!-- Coffee Making Video -->
+                    <div class="video-card">
+                        <div class="video-wrapper">
+                            <video class="menu-video" preload="metadata" poster="../Assets/drew-coffman-tZKwLRO904E-unsplash.jpg">
+                                <source src="../Assets/WhatsApp Video 2025-11-13 at 09.38.59_1f2a3d7d.mp4" type="video/mp4">
+                            </video>
+                            <div class="video-overlay">
+                                <button class="play-btn">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                            </div>
                         </div>
-                        <h3>Artisan Coffee</h3>
-                        <p>Premium blends sourced from the finest coffee regions around the world. Each cup tells a story of quality and passion.</p>
-                        <ul class="feature-list">
-                            <li>Single Origin Beans</li>
-                            <li>Expert Baristas</li>
-                            <li>Custom Roasting</li>
-                        </ul>
-                    </article>
-                    <article class="feature-card slide-in">
-                        <div class="feature-icon">
-                            <i class="fas fa-cookie-bite"></i>
-                        </div>
-                        <h3>Fresh Pastries</h3>
-                        <p>Baked fresh daily using traditional recipes and the finest ingredients. Our pastry chef creates magic every morning.</p>
-                        <ul class="feature-list">
-                            <li>Daily Fresh Baking</li>
-                            <li>Local Ingredients</li>
-                            <li>Traditional Recipes</li>
-                        </ul>
-                    </article>
-                    <article class="feature-card slide-in">
-                        <div class="feature-icon">
-                            <i class="fas fa-home"></i>
-                        </div>
-                        <h3>Cozy Atmosphere</h3>
-                        <p>The perfect spot to relax, work, or meet friends in Rosebank. Designed for comfort and inspiration.</p>
-                        <ul class="feature-list">
-                            <li>Comfortable Seating</li>
-                            <li>Free WiFi</li>
-                            <li>Friendly Environment</li>
-                        </ul>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- Testimonials Section -->
-        <section class="testimonials-section">
-            <div class="container">
-                <h2 class="section-title">What Our Customers Say</h2>
-                <div class="testimonials-slider">
-                    <div class="testimonial active">
-                        <div class="testimonial-content">
-                            <i class="fas fa-quote-left"></i>
-                            <p>"The best coffee in Johannesburg! The atmosphere is perfect for getting work done or catching up with friends."</p>
-                            <div class="testimonial-author">
-                                <strong>Sarah Johnson</strong>
-                                <span>Regular Customer</span>
+                        <div class="video-info">
+                            <h4>Artisan Coffee Crafting</h4>
+                            <p>Watch our baristas create perfect espresso shots and beautiful latte art</p>
+                            <div class="video-duration">
+                                <i class="far fa-clock"></i>
+                                <span>2:30</span>
                             </div>
                         </div>
                     </div>
-                    <div class="testimonial">
-                        <div class="testimonial-content">
-                            <i class="fas fa-quote-left"></i>
-                            <p>"Their almond croissants are to die for! Fresh, buttery, and always perfectly baked. My morning ritual!"</p>
-                            <div class="testimonial-author">
-                                <strong>David Thompson</strong>
-                                <span>Food Enthusiast</span>
+
+                    <!-- Food Preparation Video -->
+                    <div class="video-card">
+                        <div class="video-wrapper">
+                            <video class="menu-video" preload="metadata" poster="../Assets/food-video-poster.jpg">
+                                <source src="../Assets/WhatsApp Video 2025-11-09 at 22.55.44_66c916ef.mp4" type="video/mp4">
+                            </video>
+                            <div class="video-overlay">
+                                <button class="play-btn">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <h4>Fresh Food Preparation</h4>
+                            <p>See how we prepare our daily pastries and fresh sandwiches</p>
+                            <div class="video-duration">
+                                <i class="far fa-clock"></i>
+                                <span>3:15</span>
                             </div>
                         </div>
                     </div>
-                    <div class="testimonial">
-                        <div class="testimonial-content">
-                            <i class="fas fa-quote-left"></i>
-                            <p>"As a remote worker, Café Mocha is my office away from home. Great coffee, fast WiFi, and friendly staff."</p>
-                            <div class="testimonial-author">
-                                <strong>Lisa Chen</strong>
-                                <span>Digital Nomad</span>
+
+                    <!-- Café Atmosphere Video -->
+                    <div class="video-card">
+                        <div class="video-wrapper">
+                            <video class="menu-video" preload="metadata" poster="../Assets/atmosphere-video-poster.jpg">
+                                <source src="../Assets/WhatsApp Video 2025-11-09 at 22.55.40_d2cb7dca.mp4" type="video/mp4">
+                            </video>
+                            <div class="video-overlay">
+                                <button class="play-btn">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <h4>Our Café Atmosphere</h4>
+                            <p>Experience the warm and cozy ambiance of Café Mocha</p>
+                            <div class="video-duration">
+                                <i class="far fa-clock"></i>
+                                <span>1:45</span>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="testimonial-dots">
-                    <span class="dot active"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
+            </div>
+        </section>
+
+        <!-- Drinks Section -->
+        <section class="menu-section fade-in" data-category="drinks">
+            <h3><i class="fas fa-coffee"></i> Coffee & Drinks</h3>
+            
+            <!-- Hot Coffee -->
+            <div class="menu-subcategory">
+                <h4>Hot Coffee</h4>
+                <div class="menu-category">
+                    <div class="menu-card" data-categories="drinks coffee hot" data-search="espresso single double shot premium">
+                        <img src="../Assets/images (2).jpeg" alt="Rich espresso coffee in a ceramic cup" loading="lazy">
+                        <div class="card-content">
+                            <strong>Espresso</strong>
+                            <div class="price">R25</div>
+                            <p>Single or double shot of our premium blend</p>
+                            <div class="item-options">
+                                <span class="option">Single | Double +R10</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-card" data-categories="drinks coffee hot" data-search="cappuccino espresso steamed milk foam">
+                        <img src="../Assets/drew-coffman-tZKwLRO904E-unsplash.jpg" alt="Creamy cappuccino with latte art" loading="lazy">
+                        <div class="card-content">
+                            <strong>Cappuccino</strong>
+                            <div class="price">R32</div>
+                            <p>Espresso with steamed milk and dense foam</p>
+                            <div class="item-options">
+                                <span class="option">Small | Medium | Large</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-card" data-categories="drinks coffee hot" data-search="mocha chocolate signature espresso">
+                        <img src="../Assets/Hot chocolate.jpg" alt="Delicious mocha with chocolate and coffee" loading="lazy">
+                        <div class="card-content">
+                            <strong>Mocha</strong>
+                            <div class="price">R35</div>
+                            <p>Our signature drink with chocolate and espresso</p>
+                            <div class="item-options">
+                                <span class="option">Dark | Milk | White Chocolate</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-card" data-categories="drinks coffee hot" data-search="latte espresso steamed milk smooth">
+                        <img src="../Assets/latte.jpg" alt="Smooth latte with beautiful latte art" loading="lazy">
+                        <div class="card-content">
+                            <strong>Latte</strong>
+                            <div class="price">R30</div>
+                            <p>Espresso with steamed milk, smooth and creamy</p>
+                            <div class="item-options">
+                                <span class="option">Small | Medium | Large</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-card" data-categories="drinks coffee hot" data-search="americano espresso hot water">
+                        <img src="../Assets/americano.jpg" alt="American coffee in a glass cup" loading="lazy">
+                        <div class="card-content">
+                            <strong>Americano</strong>
+                            <div class="price">R28</div>
+                            <p>Espresso shots with hot water, rich and bold</p>
+                            <div class="item-options">
+                                <span class="option">Single | Double Shot</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-card" data-categories="drinks coffee hot" data-search="flat white espresso microfoam">
+                        <img src="../Assets/Flat white.jpg" alt="Flat white coffee with velvety texture" loading="lazy">
+                        <div class="card-content">
+                            <strong>Flat White</strong>
+                            <div class="price">R33</div>
+                            <p>Espresso with velvety microfoam, stronger than latte</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Iced & Cold Drinks -->
+            <div class="menu-subcategory">
+                <h4>Iced & Cold Drinks</h4>
+                <div class="menu-category">
+                    <div class="menu-card" data-categories="drinks coffee cold iced" data-search="iced coffee cold brew summer">
+                        <img src="../Assets/Ice Coffee.jpg" alt="Refreshing iced coffee with ice cubes" loading="lazy">
+                        <div class="card-content">
+                            <strong>Iced Coffee</strong>
+                            <div class="price">R35</div>
+                            <p>Chilled coffee served over ice, sweetened to taste</p>
+                            <div class="item-options">
+                                <span class="option">Add vanilla +R5</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-card" data-categories="drinks coffee cold" data-search="cold brew smooth less acidic">
+                        <img src="../Assets/Cold Brew.jpg" alt="Smooth cold brew coffee in a glass" loading="lazy">
+                        <div class="card-content">
+                            <strong>Cold Brew</strong>
+                            <div class="price">R38</div>
+                            <p>Slow-steeped for 18 hours, smooth and less acidic</p>
+                        </div>
+                    </div>
+
+                    <div class="menu-card" data-categories="drinks tea" data-search="iced tea refreshing fruit">
+                        <img src="../Assets/Ice Tea.png" alt="Fruit-infused iced tea with mint" loading="lazy">
+                        <div class="card-content">
+                            <strong>Iced Tea</strong>
+                            <div class="price">R28</div>
+                            <p>Freshly brewed tea served over ice with lemon</p>
+                            <div class="item-options">
+                                <span class="option">Peach | Berry | Lemon</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tea & Other Beverages -->
+            <div class="menu-subcategory">
+                <h4>Tea & Other Beverages</h4>
+                <div class="menu-category">
+                    <div class="menu-card" data-categories="drinks tea" data-search="english breakfast tea classic">
+                        <img src="../Assets/English Breakfast.jpg" alt="Classic English Breakfast tea in a teapot" loading="lazy">
+                        <div class="card-content">
+                            <strong>English Breakfast</strong>
+                            <div class="price">R25</div>
+                            <p>Classic black tea blend, robust and full-bodied</p>
+                        </div>
+                    </div>
+
+                    <div class="menu-card" data-categories="drinks tea" data-search="green tea antioxidant healthy">
+                        <img src="../Assets/Green Tea.jpg" alt="Green tea with tea leaves" loading="lazy">
+                        <div class="card-content">
+                            <strong>Green Tea</strong>
+                            <div class="price">R25</div>
+                            <p>Light and refreshing with antioxidant benefits</p>
+                        </div>
+                    </div>
+
+                    <div class="menu-card" data-categories="drinks tea" data-search="chamomile herbal relaxing">
+                        <img src="../Assets/Chamomile tea.jpg" alt="Soothing chamomile herbal tea" loading="lazy">
+                        <div class="card-content">
+                            <strong>Chamomile</strong>
+                            <div class="price">R25</div>
+                            <p>Soothing herbal tea, perfect for relaxation</p>
+                        </div>
+                    </div>
+
+                    <div class="menu-card" data-categories="drinks hot-chocolate" data-search="hot chocolate creamy rich">
+                        <img src="../Assets/hot-chocolate-coffee-7.jpg" alt="Rich and creamy hot chocolate" loading="lazy">
+                        <div class="card-content">
+                            <strong>Hot Chocolate</strong>
+                            <div class="price">R32</div>
+                            <p>Rich, creamy chocolate drink topped with marshmallows</p>
+                            <div class="item-options">
+                                <span class="option">Dark | Milk | White</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Instagram Feed Section -->
-        <section class="instagram-section">
-            <div class="container">
-                <h2 class="section-title">Follow Our Journey</h2>
-                <p class="section-subtitle">Tag us <strong>@cafemocha_jhb</strong> to be featured!</p>
-                <div class="instagram-grid">
-                    <div class="instagram-post">
-                        <img src="./Assets/Coffee art.webp" alt="Latte art at Café Mocha" loading="lazy">
-                        <div class="instagram-overlay">
-                            <i class="fab fa-instagram"></i>
+        <!-- Food Section -->
+        <section class="menu-section fade-in" data-category="food">
+            <h3><i class="fas fa-utensils"></i> Food & Pastries</h3>
+            
+            <!-- Pastries -->
+            <div class="menu-subcategory">
+                <h4>Fresh Pastries</h4>
+                <div class="menu-category">
+                    <div class="menu-card" data-categories="food pastries breakfast" data-search="croissant buttery flaky plain chocolate almond">
+                        <img src="../Assets/croissant.jpeg" alt="Fresh buttery croissant on a plate" loading="lazy" width="80%" height="80%">
+                        <div class="card-content">
+                            <strong>Croissant</strong>
+                            <div class="price">R28</div>
+                            <p>Buttery, flaky pastry baked fresh daily</p>
+                            <div class="item-options">
+                                <span class="option">Plain | Chocolate | Almond</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="instagram-post">
-                        <img src="./Assets/Fresh pastry display.jpg" alt="Fresh pastry display" loading="lazy">
-                        <div class="instagram-overlay">
-                            <i class="fab fa-instagram"></i>
-                        </div>
-                    </div>
-                    <div class="instagram-post">
-                        <img src="./Assets/Cozy cafe.jpg" alt="Cozy café interior" loading="lazy">
-                        <div class="instagram-overlay">
-                            <i class="fab fa-instagram"></i>
-                        </div>
-                    </div>
-                    <div class="instagram-post">
-                        <img src="./Assets/Barista crafting coffee.jpg" alt="Barista crafting coffee" loading="lazy">
-                        <div class="instagram-overlay">
-                            <i class="fab fa-instagram"></i>
+                
+                <div class="menu-card" data-categories="food pastries" data-search="muffin blueberry chocolate banana daily flavors">
+                    <img src="../Assets/Muffins.webp" alt="Assorted fresh muffins on display" loading="lazy">
+                    <div class="card-content">
+                        <strong>Muffin</strong>
+                        <div class="price">R25</div>
+                        <p>Freshly baked, moist and flavorful</p>
+                        <div class="item-options">
+                            <span class="option">Blueberry | Chocolate | Banana</span>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
 
-        <!-- Call to action -->
-        <section class="cta-section">
-            <div class="container">
-                <div class="cta-content">
-                    <h2 class="cta-title">Ready to Experience the Best Coffee in Town?</h2>
-                    <p class="cta-subtitle">Visit us today and taste the difference that quality and passion make.</p>
-                    <div class="cta-info">
-                        <div class="hours-info">
-                            <h4>Opening Hours</h4>
-                            <p>Monday - Saturday: 7:00 AM - 6:00 PM</p>
-                            <p>Sunday: 8:00 AM - 4:00 PM</p>
-                        </div>
-                        <div class="location-info">
-                            <h4>Location</h4>
-                            <p>123 Coffee Street, Rosebank</p>
-                            <p>Johannesburg, South Africa</p>
-                        </div>
-                    </div>
-                    <div class="cta-buttons">
-                        <a href="./Pages/contact.html" class="btn btn-primary">Find Us</a>
-                        <a href="tel:+27683189672" class="btn btn-secondary">
-                            <i class="fas fa-phone"></i>
-                            Call Now
-                        </a>
+                <div class="menu-card" data-categories="food pastries" data-search="cinnamon roll sweet icing">
+                    <img src="../Assets/Cinnamon Roll.jpg" width="100%" height="100%" alt="Warm cinnamon roll with cream cheese icing" loading="lazy">
+                    <div class="card-content">
+                        <strong>Cinnamon Roll</strong>
+                        <div class="price">R32</div>
+                        <p>Soft, sweet roll with cinnamon and cream cheese icing</p>
                     </div>
                 </div>
-            </div>
-        </section>
 
-        <!-- Newsletter Signup -->
-        <section class="newsletter-section">
-            <div class="container">
-                <div class="newsletter-content">
-                    <h3>Stay Updated</h3>
-                    <p>Subscribe to our newsletter for special offers, new menu items, and events.</p>
-                    <form class="newsletter-form">
-                        <input type="email" placeholder="Enter your email" required>
-                        <button type="submit" class="btn btn-primary">Subscribe</button>
-                    </form>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4>Café Mocha</h4>
-                <p>Johannesburg's premier destination for gourmet coffee and handcrafted pastries.</p>
-            </div>
-            <div class="footer-section">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="./Pages/menu.html">Menu</a></li>
-                    <li><a href="./Pages/about.html">About Us</a></li>
-                    <li><a href="./Pages/contact.html">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Contact Info</h4>
-                <p><i class="fas fa-map-marker-alt"></i> Rosebank, Johannesburg</p>
-                <p><i class="fas fa-phone"></i> +27 68 318 9672</p>
-                <p><i class="fas fa-envelope"></i> info@cafemocha.co.za</p>
-            </div>
-            <div class="footer-section">
-                <h4>Follow Us</h4>
-                <div class="social-icons">
-                    <a href="http://www.instagram.com/" class="instagram" data-platform="Instagram">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="http://www.facebook.com" class="facebook" data-platform="Facebook">
-                        <i class="fab fa-facebook"></i>
-                    </a>
-                    <a href="http://www.twitter.com/" class="twitter" data-platform="Twitter">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="http://www.tiktok.com/" class="tiktok" data-platform="TikTok">
-                        <i class="fab fa-tiktok"></i>
-                    </a>
+                <div class="menu-card" data-categories="food pastries" data-search="scone cream jam british">
+                    <img src="../Assets/Fruit scone.jpg" alt="Traditional British scones with jam and cream" loading="lazy">
+                    <div class="card-content">
+                        <strong>Fruit Scone</strong>
+                        <div class="price">R26</div>
+                        <p>Traditional British scone with dried fruits</p>
+                        <div class="item-options">
+                            <span class="option">Served with jam & cream</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 Café Mocha. All rights reserved.</p>
-            <address>
-                Rosebank, Johannesburg, South Africa
-            </address>
+
+        <!-- Sandwiches & Savories -->
+        <div class="menu-subcategory">
+            <h4>Sandwiches & Savories</h4>
+            <div class="menu-category">
+                <div class="menu-card" data-categories="food sandwiches lunch" data-search="quiche vegetable bacon lorraine">
+                    <img src="../Assets/AR-24148-easy-broccoli-quiche-beauty-4x3-e73d1f8a3a7c466f86f8b6cf33e76050.jpg" alt="Fresh vegetable quiche slice" loading="lazy">
+                    <div class="card-content">
+                        <strong>Quiche</strong>
+                        <div class="price">R45</div>
+                        <p>Savory pastry with egg and vegetable filling</p>
+                        <div class="item-options">
+                            <span class="option">Vegetable | Bacon | Lorraine</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card" data-categories="food sandwiches lunch" data-search="club sandwich turkey bacon avocado">
+                    <img src="../Assets/Club sandwich.jpg" alt="Triple-decker club sandwich with turkey and bacon" loading="lazy">
+                    <div class="card-content">
+                        <strong>Club Sandwich</strong>
+                        <div class="price">R65</div>
+                        <p>Triple-decker with turkey, bacon, lettuce, tomato & mayo</p>
+                        <div class="item-options">
+                            <span class="option">Add avocado +R15</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card" data-categories="food sandwiches lunch" data-search="panini pressed grilled cheese">
+                    <img src="../Assets/Italian Panini.jpg" alt="Grilled panini with melted cheese" loading="lazy">
+                    <div class="card-content">
+                        <strong>Italian Panini</strong>
+                        <div class="price">R55</div>
+                        <p>Pressed sandwich with mozzarella, tomato, and pesto</p>
+                        <div class="item-options">
+                            <span class="option">Chicken | Vegetarian</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card" data-categories="food sandwiches lunch" data-search="bagel cream cheese smoked salmon">
+                    <img src="../Assets/Bagel.jpg" alt="Fresh bagel with cream cheese and salmon" loading="lazy">
+                    <div class="card-content">
+                        <strong>Bagel</strong>
+                        <div class="price">R42</div>
+                        <p>Freshly baked bagel with your choice of spread</p>
+                        <div class="item-options">
+                            <span class="option">Cream Cheese | Smoked Salmon</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </footer>
 
-    <!-- Back to Top Button -->
-    <button id="backToTop" class="back-to-top">
-        <i class="fas fa-chevron-up"></i>
-    </button>
+        <!-- Breakfast -->
+        <div class="menu-subcategory">
+            <h4>Breakfast</h4>
+            <div class="menu-category">
+                <div class="menu-card" data-categories="food breakfast" data-search="avocado toast healthy poached egg">
+                    <img src="../Assets/Avocado Toast.jpg" alt="Avocado toast with poached eggs" loading="lazy">
+                    <div class="card-content">
+                        <strong>Avocado Toast</strong>
+                        <div class="price">R58</div>
+                        <p>Smashed avocado on artisan bread with cherry tomatoes</p>
+                        <div class="item-options">
+                            <span class="option">Add poached egg +R12</span>
+                        </div>
+                    </div>
+                </div>
 
-    <!-- JavaScript Files -->
-    <script src="./javascript/main.js"></script>
-    <script src="./javascript/home-slideshow.js"></script>
-    <script src="./javascript/home-animations.js"></script>
+                <div class="menu-card" data-categories="food breakfast" data-search="breakfast bowl yogurt granola fruit">
+                    <img src="../Assets/Yogurt bowl.jpg" alt="Yogurt breakfast bowl with granola and fruits" loading="lazy">
+                    <div class="card-content">
+                        <strong>Yogurt Bowl</strong>
+                        <div class="price">R45</div>
+                        <p>Greek yogurt with granola, fresh fruits and honey</p>
+                        <div class="item-options">
+                            <span class="option">Add extra fruit +R8</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="dietary-notes">
+            <p><i class="fas fa-seedling"></i> <strong>Dietary Notes:</strong> We offer gluten-free bread and vegan options. Please inform staff of any allergies.</p>
+            <p><em>All our pastries are baked fresh daily using local ingredients!</em></p>
+        </div>
+    </section>
+
+    <!-- Retail Coffee Beans Section -->
+    <section class="menu-section fade-in" data-category="coffee-beans">
+        <h3><i class="fas fa-coffee-beans"></i> Retail Coffee Beans</h3>
+        <div class="menu-category">
+            <div class="menu-card" data-categories="coffee-beans" data-search="house blend medium roast chocolate">
+                <img src="../Assets/Southern-Estate-Medium-Roast-02-scaled-1.webp" alt="House blend coffee beans medium roast" loading="lazy">
+                <div class="card-content">
+                    <strong>House Blend</strong>
+                    <div class="price">R120/250g</div>
+                    <p>Medium roast with chocolate and nut notes, well-balanced</p>
+                    <div class="item-options">
+                        <span class="option">Also available in 500g</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="menu-card" data-categories="coffee-beans" data-search="ethiopia single origin fruity floral">
+                <img src="../Assets/ethiopia.webp" alt="Ethiopian single origin coffee beans" loading="lazy">
+                <div class="card-content">
+                    <strong>Single Origin Ethiopia</strong>
+                    <div class="price">R150/250g</div>
+                    <p>Fruity and floral light roast with berry undertones</p>
+                </div>
+            </div>
+
+            <div class="menu-card" data-categories="coffee-beans" data-search="colombia dark roast bold">
+                <img src="../Assets/Colombia Dark Roast.jpg" alt="Colombian dark roast coffee beans" loading="lazy">
+                <div class="card-content">
+                    <strong>Colombia Dark Roast</strong>
+                    <div class="price">R135/250g</div>
+                    <p>Bold and rich with caramel and dark chocolate notes</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-section">
+            <h4>Café Mocha</h4>
+            <p>Johannesburg's premier destination for gourmet coffee and handcrafted pastries.</p>
+        </div>
+        <div class="footer-section">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h4>Contact Info</h4>
+            <p><i class="fas fa-map-marker-alt"></i> Rosebank, Johannesburg</p>
+            <p><i class="fas fa-phone"></i> +27 68 318 9672</p>
+            <p><i class="fas fa-envelope"></i> info@cafemocha.co.za</p>
+        </div>
+        <div class="footer-section">
+            <h4>Follow Us</h4>
+            <div class="social-icons">
+                <a href="http://www.instagram.com/" class="instagram" data-platform="Instagram" title="Follow us on Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="http://www.facebook.com" class="facebook" data-platform="Facebook" title="Like us on Facebook">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="http://www.twitter.com/" class="twitter" data-platform="Twitter" title="Follow us on Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="http://www.tiktok.com/" class="tiktok" data-platform="TikTok" title="Follow us on TikTok">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2025 Café Mocha. All rights reserved.</p>
+        <address>
+            Rosebank, Johannesburg, South Africa
+        </address>
+    </div>
+</footer>
+
+<!-- Back to Top Button -->
+<button id="backToTop" class="back-to-top">
+    <i class="fas fa-chevron-up"></i>
+</button>
+
+<!-- JavaScript Files -->
+<script src="../javascript/main.js"></script>
+<script src="../javascript/menu.js"></script>
+<script src="../javascript/gallery.js"></script>
+<script src="../javascript/video-player.js"></script>
+
+<script>
+// Emergency video visibility fix
+document.addEventListener('DOMContentLoaded', function() {
+    // Force video visibility
+    const videos = document.querySelectorAll('.menu-video');
+    videos.forEach(video => {
+        video.style.display = 'block';
+        video.style.visibility = 'visible';
+        video.style.opacity = '1';
+        video.style.width = '100%';
+        video.style.height = '100%';
+    });
+    
+    // Force video section visibility
+    const videoSection = document.querySelector('.video-section');
+    if (videoSection) {
+        videoSection.style.display = 'block';
+        videoSection.style.visibility = 'visible';
+    }
+});
+</script>
 </body>
-</html>
+</html> 
