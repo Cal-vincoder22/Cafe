@@ -11,13 +11,59 @@
     
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <style>
+        /* Additional styles for search and modal */
+        .search-results {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #666;
+        }
+        .menu-card.hidden {
+            display: none;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            max-width: 80%;
+            max-height: 80%;
+            width: 500px; /* Fixed size for consistency */
+            height: 500px; /* Fixed size for consistency */
+            object-fit: cover; /* Ensures image fits without distortion */
+        }
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 25px;
+            color: #fff;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .menu-card img {
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .menu-card img:hover {
+            transform: scale(1.05);
+        }
+    </style>
 </head>
 <body>
     <!-- Enhanced Header matching homepage -->
     <header class="sticky-header">
         <div class="header-container">
             <div class="logo-section">
-                <img src="../Assets/WhatsApp Image 2025-08-25 at 21.04.14_2d31b423.jpg" width="80" height="60" alt="Café Mocha Logo - Artisan Coffee & Food" class="logo">
+                <img src="../Assets/Cafe Mocha Logo.jpg" width="80" height="60" alt="Café Mocha Logo - Artisan Coffee & Food" class="logo">
                 <h1>Café Mocha</h1>
             </div>
             <nav>
@@ -45,8 +91,8 @@
             
             <!-- Search Functionality -->
             <div class="search-container">
-                <input type="text" class="search-input" placeholder="Search menu items... (e.g., 'cappuccino', 'croissant', 'gluten-free')">
-                <div class="search-results"></div>
+                <input type="text" id="search-input" class="search-input" placeholder="Search menu items... (e.g., 'cappuccino', 'croissant', 'gluten-free')">
+                <div class="search-results" id="search-results"></div>
             </div>
 
             <!-- Quick Navigation -->
@@ -307,7 +353,7 @@
                 <h4>Fresh Pastries</h4>
                 <div class="menu-category">
                     <div class="menu-card" data-categories="food pastries breakfast" data-search="croissant buttery flaky plain chocolate almond">
-                        <img src="../Assets/download.jpeg" alt="Fresh buttery croissant on a plate" loading="lazy" width="80%" height="80%">
+                        <img src="../Assets/croissant.jpeg" alt="Fresh buttery croissant on a plate" loading="lazy" width="80%" height="80%">
                         <div class="card-content">
                             <strong>Croissant</strong>
                             <div class="price">R28</div>
@@ -317,247 +363,247 @@
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="menu-card" data-categories="food pastries" data-search="muffin blueberry chocolate banana daily flavors">
-                        <img src="../Assets/612fa5589ef1e50018f92c83.webp" alt="Assorted fresh muffins on display" loading="lazy">
-                        <div class="card-content">
-                            <strong>Muffin</strong>
-                            <div class="price">R25</div>
-                            <p>Freshly baked, moist and flavorful</p>
-                            <div class="item-options">
-                                <span class="option">Blueberry | Chocolate | Banana</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="menu-card" data-categories="food pastries" data-search="cinnamon roll sweet icing">
-                        <img src="../Assets/Cinnamon Roll.jpg" alt="Warm cinnamon roll with cream cheese icing" loading="lazy" width="120px" height="150px">
-                        <div class="card-content">
-                            <strong>Cinnamon Roll</strong>
-                            <div class="price">R32</div>
-                            <p>Soft, sweet roll with cinnamon and cream cheese icing</p>
-                        </div>
-                    </div>
-
-                    <div class="menu-card" data-categories="food pastries" data-search="scone cream jam british">
-                        <img src="../Assets/Fruit scone.jpg" alt="Traditional British scones with jam and cream" loading="lazy">
-                        <div class="card-content">
-                            <strong>Fruit Scone</strong>
-                            <div class="price">R26</div>
-                            <p>Traditional British scone with dried fruits</p>
-                            <div class="item-options">
-                                <span class="option">Served with jam & cream</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Sandwiches & Savories -->
-            <div class="menu-subcategory">
-                <h4>Sandwiches & Savories</h4>
-                <div class="menu-category">
-                    <div class="menu-card" data-categories="food sandwiches lunch" data-search="quiche vegetable bacon lorraine">
-                        <img src="../Assets/AR-24148-easy-broccoli-quiche-beauty-4x3-e73d1f8a3a7c466f86f8b6cf33e76050.jpg" alt="Fresh vegetable quiche slice" loading="lazy">
-                        <div class="card-content">
-                            <strong>Quiche</strong>
-                            <div class="price">R45</div>
-                            <p>Savory pastry with egg and vegetable filling</p>
-                            <div class="item-options">
-                                <span class="option">Vegetable | Bacon | Lorraine</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="menu-card" data-categories="food sandwiches lunch" data-search="club sandwich turkey bacon avocado">
-                        <img src="../Assets/Club sandwich.jpg" alt="Triple-decker club sandwich with turkey and bacon" loading="lazy">
-                        <div class="card-content">
-                            <strong>Club Sandwich</strong>
-                            <div class="price">R65</div>
-                            <p>Triple-decker with turkey, bacon, lettuce, tomato & mayo</p>
-                            <div class="item-options">
-                                <span class="option">Add avocado +R15</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="menu-card" data-categories="food sandwiches lunch" data-search="panini pressed grilled cheese">
-                        <img src="../Assets/Italian Panini.jpg" alt="Grilled panini with melted cheese" loading="lazy">
-                        <div class="card-content">
-                            <strong>Italian Panini</strong>
-                            <div class="price">R55</div>
-                            <p>Pressed sandwich with mozzarella, tomato, and pesto</p>
-                            <div class="item-options">
-                                <span class="option">Chicken | Vegetarian</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="menu-card" data-categories="food sandwiches lunch" data-search="bagel cream cheese smoked salmon">
-                        <img src="../Assets/Bagel.jpg" alt="Fresh bagel with cream cheese and salmon" loading="lazy">
-                        <div class="card-content">
-                            <strong>Bagel</strong>
-                            <div class="price">R42</div>
-                            <p>Freshly baked bagel with your choice of spread</p>
-                            <div class="item-options">
-                                <span class="option">Cream Cheese | Smoked Salmon</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Breakfast -->
-            <div class="menu-subcategory">
-                <h4>Breakfast</h4>
-                <div class="menu-category">
-                    <div class="menu-card" data-categories="food breakfast" data-search="avocado toast healthy poached egg">
-                        <img src="../Assets/Avocado Toast.jpg" alt="Avocado toast with poached eggs" loading="lazy">
-                        <div class="card-content">
-                            <strong>Avocado Toast</strong>
-                            <div class="price">R58</div>
-                            <p>Smashed avocado on artisan bread with cherry tomatoes</p>
-                            <div class="item-options">
-                                <span class="option">Add poached egg +R12</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="menu-card" data-categories="food breakfast" data-search="breakfast bowl yogurt granola fruit">
-                        <img src="../Assets/Yogurt bowl.jpg" alt="Yogurt breakfast bowl with granola and fruits" loading="lazy">
-                        <div class="card-content">
-                            <strong>Yogurt Bowl</strong>
-                            <div class="price">R45</div>
-                            <p>Greek yogurt with granola, fresh fruits and honey</p>
-                            <div class="item-options">
-                                <span class="option">Add extra fruit +R8</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="dietary-notes">
-                <p><i class="fas fa-seedling"></i> <strong>Dietary Notes:</strong> We offer gluten-free bread and vegan options. Please inform staff of any allergies.</p>
-                <p><em>All our pastries are baked fresh daily using local ingredients!</em></p>
-            </div>
-        </section>
-
-        <!-- Retail Coffee Beans Section -->
-        <section class="menu-section fade-in" data-category="coffee-beans">
-            <h3><i class="fas fa-coffee-beans"></i> Retail Coffee Beans</h3>
-            <div class="menu-category">
-                <div class="menu-card" data-categories="coffee-beans" data-search="house blend medium roast chocolate">
-                    <img src="../Assets/Southern-Estate-Medium-Roast-02-scaled-1.webp" alt="House blend coffee beans medium roast" loading="lazy">
-                    <div class="card-content">
-                        <strong>House Blend</strong>
-                        <div class="price">R120/250g</div>
-                        <p>Medium roast with chocolate and nut notes, well-balanced</p>
-                        <div class="item-options">
-                            <span class="option">Also available in 500g</span>
-                        </div>
-                    </div>
-                </div>
                 
-                <div class="menu-card" data-categories="coffee-beans" data-search="ethiopia single origin fruity floral">
-                    <img src="../Assets/ethiopia.webp" alt="Ethiopian single origin coffee beans" loading="lazy">
+                <div class="menu-card" data-categories="food pastries" data-search="muffin blueberry chocolate banana daily flavors">
+                    <img src="../Assets/Muffins.webp" alt="Assorted fresh muffins on display" loading="lazy">
                     <div class="card-content">
-                        <strong>Single Origin Ethiopia</strong>
-                        <div class="price">R150/250g</div>
-                        <p>Fruity and floral light roast with berry undertones</p>
+                        <strong>Muffin</strong>
+                        <div class="price">R25</div>
+                        <p>Freshly baked, moist and flavorful</p>
+                        <div class="item-options">
+                            <span class="option">Blueberry | Chocolate | Banana</span>
+                        </div>
                     </div>
                 </div>
 
-                <div class="menu-card" data-categories="coffee-beans" data-search="colombia dark roast bold">
-                    <img src="../Assets/Colombia Dark Roast.jpg" alt="Colombian dark roast coffee beans" loading="lazy">
+                <div class="menu-card" data-categories="food pastries" data-search="cinnamon roll sweet icing">
+                    <img src="../Assets/Cinnamon Roll.jpg" width="100%" height="100%" alt="Warm cinnamon roll with cream cheese icing" loading="lazy">
                     <div class="card-content">
-                        <strong>Colombia Dark Roast</strong>
-                        <div class="price">R135/250g</div>
-                        <p>Bold and rich with caramel and dark chocolate notes</p>
+                        <strong>Cinnamon Roll</strong>
+                        <div class="price">R32</div>
+                        <p>Soft, sweet roll with cinnamon and cream cheese icing</p>
+                    </div>
+                </div>
+
+                <div class="menu-card" data-categories="food pastries" data-search="scone cream jam british">
+                    <img src="../Assets/Fruit scone.jpg" alt="Traditional British scones with jam and cream" loading="lazy">
+                    <div class="card-content">
+                        <strong>Fruit Scone</strong>
+                        <div class="price">R26</div>
+                        <p>Traditional British scone with dried fruits</p>
+                        <div class="item-options">
+                            <span class="option">Served with jam & cream</span>
+                        </div>
                     </div>
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
 
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4>Café Mocha</h4>
-                <p>Johannesburg's premier destination for gourmet coffee and handcrafted pastries.</p>
-            </div>
-            <div class="footer-section">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="../index.html">Home</a></li>
-                    <li><a href="menu.html">Menu</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Contact Info</h4>
-                <p><i class="fas fa-map-marker-alt"></i> Rosebank, Johannesburg</p>
-                <p><i class="fas fa-phone"></i> +27 68 318 9672</p>
-                <p><i class="fas fa-envelope"></i> info@cafemocha.co.za</p>
-            </div>
-            <div class="footer-section">
-                <h4>Follow Us</h4>
-                <div class="social-icons">
-                    <a href="http://www.instagram.com/" class="instagram" data-platform="Instagram" title="Follow us on Instagram">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="http://www.facebook.com" class="facebook" data-platform="Facebook" title="Like us on Facebook">
-                        <i class="fab fa-facebook"></i>
-                    </a>
-                    <a href="http://www.twitter.com/" class="twitter" data-platform="Twitter" title="Follow us on Twitter">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="http://www.tiktok.com/" class="tiktok" data-platform="TikTok" title="Follow us on TikTok">
-                        <i class="fab fa-tiktok"></i>
-                    </a>
+        <!-- Sandwiches & Savories -->
+        <div class="menu-subcategory">
+            <h4>Sandwiches & Savories</h4>
+            <div class="menu-category">
+                <div class="menu-card" data-categories="food sandwiches lunch" data-search="quiche vegetable bacon lorraine">
+                    <img src="../Assets/AR-24148-easy-broccoli-quiche-beauty-4x3-e73d1f8a3a7c466f86f8b6cf33e76050.jpg" alt="Fresh vegetable quiche slice" loading="lazy">
+                    <div class="card-content">
+                        <strong>Quiche</strong>
+                        <div class="price">R45</div>
+                        <p>Savory pastry with egg and vegetable filling</p>
+                        <div class="item-options">
+                            <span class="option">Vegetable | Bacon | Lorraine</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card" data-categories="food sandwiches lunch" data-search="club sandwich turkey bacon avocado">
+                    <img src="../Assets/Club sandwich.jpg" alt="Triple-decker club sandwich with turkey and bacon" loading="lazy">
+                    <div class="card-content">
+                        <strong>Club Sandwich</strong>
+                        <div class="price">R65</div>
+                        <p>Triple-decker with turkey, bacon, lettuce, tomato & mayo</p>
+                        <div class="item-options">
+                            <span class="option">Add avocado +R15</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card" data-categories="food sandwiches lunch" data-search="panini pressed grilled cheese">
+                    <img src="../Assets/Italian Panini.jpg" alt="Grilled panini with melted cheese" loading="lazy">
+                    <div class="card-content">
+                        <strong>Italian Panini</strong>
+                        <div class="price">R55</div>
+                        <p>Pressed sandwich with mozzarella, tomato, and pesto</p>
+                        <div class="item-options">
+                            <span class="option">Chicken | Vegetarian</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card" data-categories="food sandwiches lunch" data-search="bagel cream cheese smoked salmon">
+                    <img src="../Assets/Bagel.jpg" alt="Fresh bagel with cream cheese and salmon" loading="lazy">
+                    <div class="card-content">
+                        <strong>Bagel</strong>
+                        <div class="price">R42</div>
+                        <p>Freshly baked bagel with your choice of spread</p>
+                        <div class="item-options">
+                            <span class="option">Cream Cheese | Smoked Salmon</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 Café Mocha. All rights reserved.</p>
-            <address>
-                Rosebank, Johannesburg, South Africa
-            </address>
+
+        <!-- Breakfast -->
+        <div class="menu-subcategory">
+            <h4>Breakfast</h4>
+            <div class="menu-category">
+                <div class="menu-card" data-categories="food breakfast" data-search="avocado toast healthy poached egg">
+                    <img src="../Assets/Avocado Toast.jpg" alt="Avocado toast with poached eggs" loading="lazy">
+                    <div class="card-content">
+                        <strong>Avocado Toast</strong>
+                        <div class="price">R58</div>
+                        <p>Smashed avocado on artisan bread with cherry tomatoes</p>
+                        <div class="item-options">
+                            <span class="option">Add poached egg +R12</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card" data-categories="food breakfast" data-search="breakfast bowl yogurt granola fruit">
+                    <img src="../Assets/Yogurt bowl.jpg" alt="Yogurt breakfast bowl with granola and fruits" loading="lazy">
+                    <div class="card-content">
+                        <strong>Yogurt Bowl</strong>
+                        <div class="price">R45</div>
+                        <p>Greek yogurt with granola, fresh fruits and honey</p>
+                        <div class="item-options">
+                            <span class="option">Add extra fruit +R8</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </footer>
 
-    <!-- Back to Top Button -->
-    <button id="backToTop" class="back-to-top">
-        <i class="fas fa-chevron-up"></i>
-    </button>
+        <div class="dietary-notes">
+            <p><i class="fas fa-seedling"></i> <strong>Dietary Notes:</strong> We offer gluten-free bread and vegan options. Please inform staff of any allergies.</p>
+            <p><em>All our pastries are baked fresh daily using local ingredients!</em></p>
+        </div>
+    </section>
 
-    <!-- JavaScript Files -->
-    <script src="../javascript/main.js"></script>
-    <script src="../javascript/menu.js"></script>
-    <script src="../javascript/gallery.js"></script>
-    <script src="../javascript/video-player.js"></script>
-    
-    <script>
-    // Emergency video visibility fix
-    document.addEventListener('DOMContentLoaded', function() {
-        // Force video visibility
-        const videos = document.querySelectorAll('.menu-video');
-        videos.forEach(video => {
-            video.style.display = 'block';
-            video.style.visibility = 'visible';
-            video.style.opacity = '1';
-            video.style.width = '100%';
-            video.style.height = '100%';
-        });
-        
-        // Force video section visibility
-        const videoSection = document.querySelector('.video-section');
-        if (videoSection) {
-            videoSection.style.display = 'block';
-            videoSection.style.visibility = 'visible';
-        }
+    <!-- Retail Coffee Beans Section -->
+    <section class="menu-section fade-in" data-category="coffee-beans">
+        <h3><i class="fas fa-coffee-beans"></i> Retail Coffee Beans</h3>
+        <div class="menu-category">
+            <div class="menu-card" data-categories="coffee-beans" data-search="house blend medium roast chocolate">
+                <img src="../Assets/Southern-Estate-Medium-Roast-02-scaled-1.webp" alt="House blend coffee beans medium roast" loading="lazy">
+                <div class="card-content">
+                    <strong>House Blend</strong>
+                    <div class="price">R120/250g</div>
+                    <p>Medium roast with chocolate and nut notes, well-balanced</p>
+                    <div class="item-options">
+                        <span class="option">Also available in 500g</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="menu-card" data-categories="coffee-beans" data-search="ethiopia single origin fruity floral">
+                <img src="../Assets/ethiopia.webp" alt="Ethiopian single origin coffee beans" loading="lazy">
+                <div class="card-content">
+                    <strong>Single Origin Ethiopia</strong>
+                    <div class="price">R150/250g</div>
+                    <p>Fruity and floral light roast with berry undertones</p>
+                </div>
+            </div>
+
+            <div class="menu-card" data-categories="coffee-beans" data-search="colombia dark roast bold">
+                <img src="../Assets/Colombia Dark Roast.jpg" alt="Colombian dark roast coffee beans" loading="lazy">
+                <div class="card-content">
+                    <strong>Colombia Dark Roast</strong>
+                    <div class="price">R135/250g</div>
+                    <p>Bold and rich with caramel and dark chocolate notes</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-section">
+            <h4>Café Mocha</h4>
+            <p>Johannesburg's premier destination for gourmet coffee and handcrafted pastries.</p>
+        </div>
+        <div class="footer-section">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h4>Contact Info</h4>
+            <p><i class="fas fa-map-marker-alt"></i> Rosebank, Johannesburg</p>
+            <p><i class="fas fa-phone"></i> +27 68 318 9672</p>
+            <p><i class="fas fa-envelope"></i> info@cafemocha.co.za</p>
+        </div>
+        <div class="footer-section">
+            <h4>Follow Us</h4>
+            <div class="social-icons">
+                <a href="http://www.instagram.com/" class="instagram" data-platform="Instagram" title="Follow us on Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="http://www.facebook.com" class="facebook" data-platform="Facebook" title="Like us on Facebook">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="http://www.twitter.com/" class="twitter" data-platform="Twitter" title="Follow us on Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="http://www.tiktok.com/" class="tiktok" data-platform="TikTok" title="Follow us on TikTok">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2025 Café Mocha. All rights reserved.</p>
+        <address>
+            Rosebank, Johannesburg, South Africa
+        </address>
+    </div>
+</footer>
+
+<!-- Back to Top Button -->
+<button id="backToTop" class="back-to-top">
+    <i class="fas fa-chevron-up"></i>
+</button>
+
+<!-- JavaScript Files -->
+<script src="../javascript/main.js"></script>
+<script src="../javascript/menu.js"></script>
+<script src="../javascript/gallery.js"></script>
+<script src="../javascript/video-player.js"></script>
+
+<script>
+// Emergency video visibility fix
+document.addEventListener('DOMContentLoaded', function() {
+    // Force video visibility
+    const videos = document.querySelectorAll('.menu-video');
+    videos.forEach(video => {
+        video.style.display = 'block';
+        video.style.visibility = 'visible';
+        video.style.opacity = '1';
+        video.style.width = '100%';
+        video.style.height = '100%';
     });
-    </script>
+    
+    // Force video section visibility
+    const videoSection = document.querySelector('.video-section');
+    if (videoSection) {
+        videoSection.style.display = 'block';
+        videoSection.style.visibility = 'visible';
+    }
+});
+</script>
 </body>
 </html>
